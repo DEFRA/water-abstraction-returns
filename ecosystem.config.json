@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "watch": true,
+      "name": "returns",
+      "ignore_watch": [
+        "node_modules"
+      ],
+      "script": "index.js"
+    }
+  ]
+}
