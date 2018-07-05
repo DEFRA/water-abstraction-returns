@@ -1,5 +1,7 @@
 # water-abstraction-returns
 
+[![Build Status](https://travis-ci.org/DEFRA/water-abstraction-returns.svg?branch=master)](https://travis-ci.org/DEFRA/water-abstraction-returns)
+
 The water-abstraction-returns service is a evolving solution to initially handle the returns required by water abstraction licences.
 
 The service is developed in HAPI/NodeJS and backed by a Postgres SQL database.  All data is transferred via a REST API with JWT authentication.
