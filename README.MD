@@ -1,6 +1,6 @@
 # water-abstraction-returns
 
-[![Build Status](https://travis-ci.org/DEFRA/water-abstraction-returns.svg?branch=master)](https://travis-ci.org/DEFRA/water-abstraction-returns)
+[![Build Status](https://travis-ci.org/DEFRA/water-abstraction-returns.svg?branch=develop)](https://travis-ci.org/DEFRA/water-abstraction-returns)
 
 The water-abstraction-returns service is a evolving solution to initially handle the returns required by water abstraction licences.
 
