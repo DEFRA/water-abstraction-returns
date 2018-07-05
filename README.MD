@@ -1,6 +1,7 @@
 # water-abstraction-returns
 
 [![Build Status](https://travis-ci.org/DEFRA/water-abstraction-returns.svg?branch=develop)](https://travis-ci.org/DEFRA/water-abstraction-returns)
+[![NSP Status](https://nodesecurity.io/orgs/cruikshanks/projects/393f7b86-dd32-4361-b608-19b643557323/badge)](https://nodesecurity.io/orgs/cruikshanks/projects/393f7b86-dd32-4361-b608-19b643557323)
 
 The water-abstraction-returns service is a evolving solution to initially handle the returns required by water abstraction licences.
 
