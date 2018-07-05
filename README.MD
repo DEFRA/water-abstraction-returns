@@ -1,7 +1,13 @@
-# water-abstraction-returns
-
 [![Build Status](https://travis-ci.org/DEFRA/water-abstraction-returns.svg?branch=develop)](https://travis-ci.org/DEFRA/water-abstraction-returns)
+
 [![NSP Status](https://nodesecurity.io/orgs/cruikshanks/projects/393f7b86-dd32-4361-b608-19b643557323/badge)](https://nodesecurity.io/orgs/cruikshanks/projects/393f7b86-dd32-4361-b608-19b643557323)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/c1266ede450e443bd8fc/maintainability)](https://codeclimate.com/github/DEFRA/water-abstraction-returns/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c1266ede450e443bd8fc/test_coverage)](https://codeclimate.com/github/DEFRA/water-abstraction-returns/test_coverage)
+
+
+# Water Abstraction Returns
 
 The water-abstraction-returns service is a evolving solution to initially handle the returns required by water abstraction licences.
 
