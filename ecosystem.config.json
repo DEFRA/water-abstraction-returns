@@ -1,11 +1,16 @@
 {
   "apps": [
     {
-      "watch": true,
       "name": "returns",
       "ignore_watch": [
         "node_modules"
       ],
+      "env": {
+        "watch": true
+      },
+      "env_production": {
+        "watch": false
+      },
       "script": "index.js"
     }
   ]
