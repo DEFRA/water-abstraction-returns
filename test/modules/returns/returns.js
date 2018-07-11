@@ -8,7 +8,7 @@ const lab = exports.lab = Lab.script();
 const Code = require('code');
 const server = require('../../../index');
 
-const createTestReturn = require('./create-test-return');
+const { createTestReturn, deleteTestReturn } = require('./common');
 
 lab.experiment('Check returns API', () => {
   lab.test('The returns API should accept a new return', async () => {
@@ -55,14 +55,7 @@ lab.experiment('Check returns API', () => {
   });
 
   lab.test('The returns API should delete a particular return', async () => {
-    const request = {
-      method: 'DELETE',
-      url: `/returns/1.0/returns/test`,
-      headers: {
-        Authorization: process.env.JWT_TOKEN
-      }
-    };
-    const res = await server.inject(request);
+    const res = await deleteTestReturn();
     Code.expect(res.statusCode).to.equal(200);
   });
 });

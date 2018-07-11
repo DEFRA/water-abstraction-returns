@@ -8,12 +8,15 @@ const lab = exports.lab = Lab.script();
 const Code = require('code');
 const server = require('../../../index');
 
-const createTestReturn = require('./create-test-return');
-const createTestVersion = require('./create-test-version');
+const { createTestReturn, deleteTestReturn, createTestVersion, deleteTestVersion } = require('./common');
 
 lab.experiment('Check versions API', () => {
   lab.before(async () => {
     await createTestReturn();
+  });
+
+  lab.after(async () => {
+    await deleteTestReturn();
   });
 
   lab.test('The versions API should accept a new return version', async () => {
@@ -61,14 +64,7 @@ lab.experiment('Check versions API', () => {
   });
 
   lab.test('The versions API should delete a particular version', async () => {
-    const request = {
-      method: 'DELETE',
-      url: `/returns/1.0/versions/test`,
-      headers: {
-        Authorization: process.env.JWT_TOKEN
-      }
-    };
-    const res = await server.inject(request);
+    const res = await deleteTestVersion();
     Code.expect(res.statusCode).to.equal(200);
   });
 });
