@@ -13,7 +13,8 @@ module.exports = () => {
       user_id: 'mail@example.com',
       user_type: 'customer',
       version_number: 1,
-      metadata: '{}'
+      metadata: '{}',
+      nil_return: false
     }
   };
   return server.inject(request);

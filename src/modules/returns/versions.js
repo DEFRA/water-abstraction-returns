@@ -13,7 +13,7 @@ const versionsApi = new HAPIRestAPI({
   onUpdateTimestamp: 'updated_at',
   upsert: {
     fields: ['version_id'],
-    set: ['return_id', 'user_id', 'user_type', 'version_number', 'metadata']
+    set: ['return_id', 'user_id', 'user_type', 'version_number', 'metadata', 'nil_return']
   },
   primaryKeyAuto: false,
   primaryKeyGuid: false,
@@ -23,7 +23,8 @@ const versionsApi = new HAPIRestAPI({
     user_id: Joi.string(),
     user_type: Joi.string(),
     version_number: Joi.number(),
-    metadata: Joi.string()
+    metadata: Joi.string(),
+    nil_return: Joi.boolean()
   },
   showSql: true
 });
