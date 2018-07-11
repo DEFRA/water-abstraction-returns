@@ -1,5 +1,7 @@
 const returnsApi = require('./returns');
+const versionsApi = require('./versions');
 
 module.exports = [
-  ...returnsApi.getRoutes()
+  ...returnsApi.getRoutes(),
+  ...versionsApi.getRoutes()
 ];

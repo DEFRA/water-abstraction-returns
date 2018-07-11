@@ -9,38 +9,44 @@ const Code = require('code');
 const server = require('../../../index');
 
 const createTestReturn = require('./create-test-return');
+const createTestVersion = require('./create-test-version');
 
-lab.experiment('Check returns API', () => {
-  lab.test('The returns API should accept a new return', async () => {
-    const res = await createTestReturn();
+lab.experiment('Check versions API', () => {
+  lab.before(async () => {
+    await createTestReturn();
+  });
+
+  lab.test('The versions API should accept a new return version', async () => {
+    const res = await createTestVersion();
     Code.expect(res.statusCode).to.equal(201);
   });
 
-  lab.test('The returns API should update a return', async () => {
+  lab.test('The versions API should update a version', async () => {
     const request = {
       method: 'PATCH',
-      url: `/returns/1.0/returns/test`,
+      url: `/returns/1.0/versions/test`,
       headers: {
         Authorization: process.env.JWT_TOKEN
       },
       payload: {
-        return_id: 'test',
-        metadata: JSON.stringify({points: ['SP 456 789']})
+        user_type: 'external'
       }
     };
     const res = await server.inject(request);
     Code.expect(res.statusCode).to.equal(200);
+
+    const body = JSON.parse(res.payload);
+    Code.expect(body.data.user_type).to.equal('external');
   });
 
-  lab.test('The returns API should list returns for a particular regime/licence type', async () => {
+  lab.test('The versions API should list versions for a particular return', async () => {
     const filter = {
-      regime: 'water-test',
-      licence_type: 'abstraction-test'
+      return_id: 'test'
     };
 
     const request = {
       method: 'GET',
-      url: `/returns/1.0/returns?filter=${JSON.stringify(filter)}`,
+      url: `/returns/1.0/versions?filter=${JSON.stringify(filter)}`,
       headers: {
         Authorization: process.env.JWT_TOKEN
       }
@@ -54,10 +60,10 @@ lab.experiment('Check returns API', () => {
     Code.expect(body.error).to.equal(null);
   });
 
-  lab.test('The returns API should delete a particular return', async () => {
+  lab.test('The versions API should delete a particular version', async () => {
     const request = {
       method: 'DELETE',
-      url: `/returns/1.0/returns/test`,
+      url: `/returns/1.0/versions/test`,
       headers: {
         Authorization: process.env.JWT_TOKEN
       }
