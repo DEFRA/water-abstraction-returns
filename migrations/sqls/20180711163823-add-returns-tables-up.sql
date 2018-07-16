@@ -74,7 +74,7 @@ CREATE TABLE returns.lines
     line_id character varying COLLATE pg_catalog."default" NOT NULL,
     version_id character varying COLLATE pg_catalog."default" NOT NULL,
     substance character varying COLLATE pg_catalog."default" NOT NULL,
-    quantity numeric NOT NULL,
+    quantity numeric,
     unit character varying COLLATE pg_catalog."default" NOT NULL,
     start_date timestamp without time zone NOT NULL,
     end_date timestamp without time zone NOT NULL,
