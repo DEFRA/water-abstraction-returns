@@ -24,7 +24,6 @@ lab.experiment('Check returns API', () => {
         Authorization: process.env.JWT_TOKEN
       },
       payload: {
-        return_id: 'test',
         metadata: JSON.stringify({points: ['SP 456 789']})
       }
     };
