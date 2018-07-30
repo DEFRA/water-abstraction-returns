@@ -23,8 +23,6 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE returns.returns
-    OWNER to postgres;
 
 
 -- Table: returns.versions
@@ -53,8 +51,7 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE returns.versions
-    OWNER to postgres;
+
 
 -- Index: fki_return_id
 
@@ -93,8 +90,6 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE returns.lines
-    OWNER to postgres;
 
 -- Index: fki_version_id
 
