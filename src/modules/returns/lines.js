@@ -13,7 +13,7 @@ const linesApi = new HAPIRestAPI({
   onUpdateTimestamp: 'updated_at',
   upsert: {
     fields: ['line_id'],
-    set: ['version_id', 'substance', 'quantity', 'unit', 'start_date', 'end_date', 'time_period', 'metadata']
+    set: ['version_id', 'substance', 'quantity', 'unit', 'start_date', 'end_date', 'time_period', 'metadata', 'reading_type']
   },
   primaryKeyAuto: false,
   primaryKeyGuid: false,
@@ -26,7 +26,8 @@ const linesApi = new HAPIRestAPI({
     start_date: Joi.string().regex(isoDateRegex),
     end_date: Joi.string().regex(isoDateRegex),
     time_period: Joi.string().allow('day', 'week', 'month', 'year'),
-    metadata: Joi.string()
+    metadata: Joi.string(),
+    reading_type: Joi.string().allow('estimate', 'measured', 'derived', 'assessed')
   },
   showSql: true
 });

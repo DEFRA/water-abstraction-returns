@@ -42,7 +42,8 @@ lab.experiment('Check versions API', () => {
         start_date: '2018-08-01',
         end_date: '2018-08-01',
         time_period: 'day',
-        metadata: JSON.stringify(metadata)
+        metadata: JSON.stringify(metadata),
+        reading_type: 'estimate'
       }
     };
 
