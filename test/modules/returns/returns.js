@@ -24,7 +24,8 @@ lab.experiment('Check returns API', () => {
         Authorization: process.env.JWT_TOKEN
       },
       payload: {
-        metadata: JSON.stringify({points: ['SP 456 789']})
+        metadata: JSON.stringify({points: ['SP 456 789']}),
+        received_date: '2018-10-01'
       }
     };
     const res = await server.inject(request);

@@ -27,7 +27,8 @@ const returnsApi = new HAPIRestAPI({
     returns_frequency: Joi.string().allow('annual', 'monthly', 'weekly', 'daily'),
     status: Joi.string().allow('pending', 'received', 'complete'),
     source: Joi.string(),
-    metadata: Joi.string()
+    metadata: Joi.string(),
+    received_date: Joi.string().regex(isoDateRegex).allow(null)
   },
   showSql: true
 });
