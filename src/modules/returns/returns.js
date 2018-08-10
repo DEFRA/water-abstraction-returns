@@ -34,3 +34,5 @@ const returnsApi = new HAPIRestAPI({
 });
 
 module.exports = returnsApi;
+
+module.exports.repo = returnsApi.repo;
