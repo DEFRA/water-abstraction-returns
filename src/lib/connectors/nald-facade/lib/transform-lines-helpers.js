@@ -13,12 +13,14 @@ const mapLine = (returnRow, line) => {
   const endDate = moment(line.RET_DATE, 'YYYYMMDDHHmmss').format('YYYY-MM-DD');
   const lineId = `${returnRow.return_id}:${endDate}`;
   const { ARFL_ARTY_ID, ARFL_DATE_FROM, RET_DATE } = line;
+
   return {
     line_id: lineId,
     start_date: startDate,
     end_date: moment(line.RET_DATE, 'YYYYMMDDHHmmss').format('YYYY-MM-DD'),
     quantity: mapQuantity(line.RET_QTY),
-    unit: mapUnit(line.UNIT_RET_FLAG),
+    unit: 'm³',
+    user_unit: mapUnit(line.UNIT_RET_FLAG),
     reading_type: mapUsability(line.RET_QTY_USABILITY),
     time_period: returnRow.returns_frequency,
     metadata: {
