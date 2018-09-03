@@ -13,7 +13,7 @@ const returnsApi = new HAPIRestAPI({
   onUpdateTimestamp: 'updated_at',
   upsert: {
     fields: ['return_id'],
-    set: ['regime', 'licence_type', 'licence_ref', 'start_date', 'end_date', 'returns_frequency', 'status', 'source', 'metadata']
+    set: ['regime', 'licence_type', 'licence_ref', 'start_date', 'end_date', 'returns_frequency', 'status', 'source', 'metadata', 'received_date']
   },
   primaryKeyAuto: false,
   primaryKeyGuid: false,
@@ -27,9 +27,12 @@ const returnsApi = new HAPIRestAPI({
     returns_frequency: Joi.string().allow('annual', 'monthly', 'weekly', 'daily'),
     status: Joi.string().allow('pending', 'received', 'complete'),
     source: Joi.string(),
-    metadata: Joi.string()
+    metadata: Joi.string(),
+    received_date: Joi.string().regex(isoDateRegex).allow(null)
   },
   showSql: true
 });
 
 module.exports = returnsApi;
+
+module.exports.repo = returnsApi.repo;
