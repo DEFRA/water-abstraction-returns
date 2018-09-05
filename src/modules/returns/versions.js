@@ -22,9 +22,22 @@ const versionsApi = new HAPIRestAPI({
     user_type: Joi.string(),
     version_number: Joi.number(),
     metadata: Joi.string(),
-    nil_return: Joi.boolean()
+    nil_return: Joi.boolean(),
+    current: Joi.boolean()
   },
-  showSql: true
+  showSql: true,
+  preInsert: async (data) => {
+    // If current flag is true in submitted data, update other return versions
+    // so that they are no longer current
+    if (data.current) {
+      const query = `UPDATE returns.versions SET current=false WHERE return_id=$1`;
+      const params = [data.return_id];
+      await pool.query(query, params);
+      console.log(query, params);
+    }
+
+    return data;
+  }
 });
 
 module.exports = versionsApi;

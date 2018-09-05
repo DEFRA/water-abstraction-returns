@@ -49,7 +49,8 @@ module.exports = {
         user_type: 'customer',
         version_number: 1,
         metadata: '{}',
-        nil_return: false
+        nil_return: false,
+        current: true
       }
     };
     return server.inject(request);
