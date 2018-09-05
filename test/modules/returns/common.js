@@ -17,7 +17,8 @@ module.exports = {
         end_date: '2018-12-31',
         returns_frequency: 'monthly',
         status: 'pending',
-        metadata: JSON.stringify({points: ['SP 1234 5567']})
+        metadata: JSON.stringify({points: ['SP 1234 5567']}),
+        return_requirement: 'test'
       }
     };
     return server.inject(request);

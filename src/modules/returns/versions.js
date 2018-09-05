@@ -1,23 +1,30 @@
-const Boom = require('boom');
-const naldFacade = require('../../lib/connectors/nald-facade');
+const HAPIRestAPI = require('hapi-pg-rest-api');
+const Joi = require('joi');
+const { pool } = require('../../lib/connectors/db');
 
-const getVersions = async (request, h) => {
-  let filter;
+const versionsApi = new HAPIRestAPI({
+  table: 'returns.versions',
+  primaryKey: 'version_id',
+  endpoint: '/returns/1.0/versions',
+  connection: pool,
+  onCreateTimestamp: 'created_at',
+  onUpdateTimestamp: 'updated_at',
+  upsert: {
+    fields: ['return_id', 'version_number'],
+    set: ['user_id', 'user_type', 'metadata', 'nil_return']
+  },
+  primaryKeyAuto: false,
+  primaryKeyGuid: false,
+  validation: {
+    version_id: Joi.string(),
+    return_id: Joi.string(),
+    user_id: Joi.string(),
+    user_type: Joi.string(),
+    version_number: Joi.number(),
+    metadata: Joi.string(),
+    nil_return: Joi.boolean()
+  },
+  showSql: true
+});
 
-  try {
-    filter = JSON.parse(request.query.filter);
-  } catch (err) {
-    throw Boom.badRequest('Invalid filter JSON', err);
-  }
-
-  const { rows: data } = await naldFacade.versions.find(filter);
-
-  return {
-    data,
-    error: null
-  };
-};
-
-module.exports = {
-  getVersions
-};
+module.exports = versionsApi;

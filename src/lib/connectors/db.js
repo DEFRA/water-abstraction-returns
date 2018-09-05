@@ -1,5 +1,13 @@
+const moment = require('moment');
+const pg = require('pg');
 const config = require('../../../config.js');
-const { Pool } = require('pg');
+
+const { Pool } = pg;
+
+// Set dates to format YYYY-MM-DD rather than full date/time string with timezone
+pg.types.setTypeParser(1082, 'text', function (val) {
+  return moment(val).format('YYYY-MM-DD');
+});
 
 const pool = new Pool(config.pg);
 
