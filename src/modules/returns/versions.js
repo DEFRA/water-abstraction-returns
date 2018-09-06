@@ -11,7 +11,7 @@ const versionsApi = new HAPIRestAPI({
   onUpdateTimestamp: 'updated_at',
   upsert: {
     fields: ['return_id', 'version_number'],
-    set: ['user_id', 'user_type', 'metadata', 'nil_return']
+    set: ['user_id', 'user_type', 'metadata', 'nil_return', 'current']
   },
   primaryKeyAuto: false,
   primaryKeyGuid: false,
@@ -33,9 +33,7 @@ const versionsApi = new HAPIRestAPI({
       const query = `UPDATE returns.versions SET current=false WHERE return_id=$1`;
       const params = [data.return_id];
       await pool.query(query, params);
-      console.log(query, params);
     }
-
     return data;
   }
 });
