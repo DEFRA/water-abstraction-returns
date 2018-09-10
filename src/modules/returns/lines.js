@@ -1,23 +1,36 @@
-const Boom = require('boom');
-const naldFacade = require('../../lib/connectors/nald-facade');
+const HAPIRestAPI = require('hapi-pg-rest-api');
+const Joi = require('joi');
+const { pool } = require('../../lib/connectors/db');
 
-const getLines = async (request, h) => {
-  let filter;
+const isoDateRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
 
-  try {
-    filter = JSON.parse(request.query.filter);
-  } catch (err) {
-    throw Boom.badRequest('Invalid filter JSON', err);
-  }
+const linesApi = new HAPIRestAPI({
+  table: 'returns.lines',
+  primaryKey: 'line_id',
+  endpoint: '/returns/1.0/lines',
+  connection: pool,
+  onCreateTimestamp: 'created_at',
+  onUpdateTimestamp: 'updated_at',
+  upsert: {
+    fields: ['version_id', 'substance', 'start_date', 'end_date'],
+    set: ['quantity', 'unit', 'user_unit', 'time_period', 'metadata', 'reading_type']
+  },
+  primaryKeyAuto: false,
+  primaryKeyGuid: false,
+  validation: {
+    line_id: Joi.string(),
+    version_id: Joi.string(),
+    substance: Joi.string(),
+    quantity: Joi.number(),
+    unit: Joi.string(),
+    user_unit: Joi.string(),
+    start_date: Joi.string().regex(isoDateRegex),
+    end_date: Joi.string().regex(isoDateRegex),
+    time_period: Joi.string().allow('day', 'week', 'month', 'year'),
+    metadata: Joi.string(),
+    reading_type: Joi.string().valid(['estimated', 'measured', 'assessed', 'derived'])
+  },
+  showSql: true
+});
 
-  const { rows: data } = await naldFacade.lines.find(filter);
-
-  return {
-    data,
-    error: null
-  };
-};
-
-module.exports = {
-  getLines
-};
+module.exports = linesApi;

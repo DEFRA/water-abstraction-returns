@@ -12,8 +12,8 @@ const returnsApi = new HAPIRestAPI({
   onCreateTimestamp: 'created_at',
   onUpdateTimestamp: 'updated_at',
   upsert: {
-    fields: ['return_id'],
-    set: ['regime', 'licence_type', 'licence_ref', 'start_date', 'end_date', 'returns_frequency', 'status', 'source', 'metadata', 'received_date']
+    fields: ['regime', 'licence_type', 'licence_ref', 'start_date', 'end_date', 'return_requirement'],
+    set: ['returns_frequency', 'status', 'source', 'metadata', 'received_date']
   },
   primaryKeyAuto: false,
   primaryKeyGuid: false,
@@ -28,7 +28,8 @@ const returnsApi = new HAPIRestAPI({
     status: Joi.string().allow('pending', 'received', 'complete'),
     source: Joi.string(),
     metadata: Joi.string(),
-    received_date: Joi.string().regex(isoDateRegex).allow(null)
+    received_date: Joi.string().regex(isoDateRegex).allow(null),
+    return_requirement: Joi.string()
   },
   showSql: true
 });
