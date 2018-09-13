@@ -21,7 +21,7 @@ const linesApi = new HAPIRestAPI({
     line_id: Joi.string(),
     version_id: Joi.string(),
     substance: Joi.string(),
-    quantity: Joi.number(),
+    quantity: Joi.number().allow(null),
     unit: Joi.string(),
     user_unit: Joi.string(),
     start_date: Joi.string().regex(isoDateRegex),
