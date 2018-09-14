@@ -15,8 +15,8 @@ module.exports = {
         licence_ref: '012/45/5675/R01',
         start_date: '2018-01-01',
         end_date: '2018-12-31',
-        returns_frequency: 'monthly',
-        status: 'pending',
+        returns_frequency: 'month',
+        status: 'due',
         metadata: JSON.stringify({points: ['SP 1234 5567']}),
         return_requirement: 'test'
       }
