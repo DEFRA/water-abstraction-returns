@@ -15,9 +15,10 @@ module.exports = {
         licence_ref: '012/45/5675/R01',
         start_date: '2018-01-01',
         end_date: '2018-12-31',
-        returns_frequency: 'monthly',
-        status: 'pending',
-        metadata: JSON.stringify({points: ['SP 1234 5567']})
+        returns_frequency: 'month',
+        status: 'due',
+        metadata: JSON.stringify({points: ['SP 1234 5567']}),
+        return_requirement: 'test'
       }
     };
     return server.inject(request);
@@ -48,7 +49,8 @@ module.exports = {
         user_type: 'customer',
         version_number: 1,
         metadata: '{}',
-        nil_return: false
+        nil_return: false,
+        current: true
       }
     };
     return server.inject(request);
