@@ -4,10 +4,14 @@
   "description": "Service for water abstraction returns data",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/lab/bin/lab -t 55 -m 0 --coverage-path ./src/ -r lcov -o lcov.info -r console -o stdout",
+    "test": "lab",
+    "test:travis": "lab -t 55 -m 0 --coverage-path ./src/ -r lcov -o lcov.info -r console -o stdout",
     "test-cov-html": "lab -r html -o coverage.html",
-    "migrate": "node scripts/create-schema && node node_modules/db-migrate/bin/db-migrate up --verbose",
-    "lint": "./node_modules/.bin/eslint ./src/**/*.js --fix"
+    "migrate": "node scripts/create-schema && db-migrate up --verbose",
+    "migrate:down": "db-migrate down --verbose",
+    "migrate:create": "db-migrate create --sql-file --",
+    "lint": "eslint ./src/**/*.js",
+    "codecov": "codecov"
   },
   "engines": {
     "node": ">=8.0"
