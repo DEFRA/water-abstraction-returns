@@ -12,8 +12,8 @@ const returnsApi = new HAPIRestAPI({
   onCreateTimestamp: 'created_at',
   onUpdateTimestamp: 'updated_at',
   upsert: {
-    fields: ['regime', 'licence_type', 'licence_ref', 'start_date', 'end_date', 'return_requirement', 'due_date'],
-    set: ['returns_frequency', 'status', 'source', 'metadata', 'received_date']
+    fields: ['regime', 'licence_type', 'licence_ref', 'start_date', 'end_date', 'return_requirement'],
+    set: ['returns_frequency', 'status', 'source', 'metadata', 'received_date', 'due_date']
   },
   primaryKeyAuto: false,
   primaryKeyGuid: false,
