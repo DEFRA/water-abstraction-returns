@@ -13,7 +13,7 @@ const returnsApi = new HAPIRestAPI({
   onUpdateTimestamp: 'updated_at',
   upsert: {
     fields: ['regime', 'licence_type', 'licence_ref', 'start_date', 'end_date', 'return_requirement'],
-    set: ['returns_frequency', 'status', 'source', 'metadata', 'received_date']
+    set: ['returns_frequency', 'status', 'source', 'metadata', 'received_date', 'due_date']
   },
   primaryKeyAuto: false,
   primaryKeyGuid: false,
@@ -24,6 +24,7 @@ const returnsApi = new HAPIRestAPI({
     licence_ref: Joi.string(),
     start_date: Joi.string().regex(isoDateRegex),
     end_date: Joi.string().regex(isoDateRegex),
+    due_date: Joi.string().regex(isoDateRegex),
     returns_frequency: Joi.string().valid('year', 'month', 'quarter', 'week', 'day'),
     status: Joi.string().valid('due', 'received', 'completed'),
     source: Joi.string(),
