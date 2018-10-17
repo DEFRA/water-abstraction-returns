@@ -11,10 +11,6 @@ const linesApi = new HAPIRestAPI({
   connection: pool,
   onCreateTimestamp: 'created_at',
   onUpdateTimestamp: 'updated_at',
-  upsert: {
-    fields: ['version_id', 'substance', 'start_date', 'end_date'],
-    set: ['quantity', 'unit', 'user_unit', 'time_period', 'metadata', 'reading_type']
-  },
   primaryKeyAuto: false,
   primaryKeyGuid: false,
   validation: {

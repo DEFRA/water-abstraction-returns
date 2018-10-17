@@ -9,10 +9,6 @@ const versionsApi = new HAPIRestAPI({
   connection: pool,
   onCreateTimestamp: 'created_at',
   onUpdateTimestamp: 'updated_at',
-  upsert: {
-    fields: ['return_id', 'version_number'],
-    set: ['user_id', 'user_type', 'metadata', 'nil_return', 'current']
-  },
   primaryKeyAuto: false,
   primaryKeyGuid: false,
   validation: {
