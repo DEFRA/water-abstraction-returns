@@ -3,6 +3,7 @@ const pg = require('pg');
 const config = require('../../../config.js');
 
 const { Pool } = pg;
+const logger = require('../logger');
 
 // Set dates to format YYYY-MM-DD rather than full date/time string with timezone
 pg.types.setTypeParser(1082, 'text', function (val) {
@@ -14,7 +15,7 @@ const pool = new Pool(config.pg);
 pool.on('acquire', () => {
   const { totalCount, idleCount, waitingCount } = pool;
   if (totalCount === config.pg.max && idleCount === 0 && waitingCount > 0) {
-    console.log(`Pool low on connections::Total:${totalCount},Idle:${idleCount},Waiting:${waitingCount}`);
+    logger.info(`Pool low on connections::Total:${totalCount},Idle:${idleCount},Waiting:${waitingCount}`);
   }
 });
 
