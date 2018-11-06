@@ -19,7 +19,9 @@ module.exports = {
         returns_frequency: 'month',
         status: 'due',
         metadata: JSON.stringify({points: ['SP 1234 5567']}),
-        return_requirement: 'test'
+        return_requirement: 'test',
+        under_query: true,
+        under_query_comment: 'Return was water damaged'
       }
     };
     return server.inject(request);

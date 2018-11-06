@@ -14,6 +14,33 @@ lab.experiment('Check returns API', () => {
   lab.test('The returns API should accept a new return', async () => {
     const res = await createTestReturn();
     Code.expect(res.statusCode).to.equal(201);
+
+    const payload = JSON.parse(res.payload);
+
+    const { created_at: createdAt, ...rest} = payload.data;
+
+    Code.expect(rest).to.equal({
+      'return_id': 'test',
+      'regime': 'water-test',
+      'licence_type': 'abstraction-test',
+      'licence_ref': '012/45/5675/R01',
+      'start_date': '2018-01-01',
+      'end_date': '2018-12-31',
+      'returns_frequency': 'month',
+      'status': 'due',
+      'source': null,
+      'metadata': {
+        'points': [
+          'SP 1234 5567'
+        ]
+      },
+      'updated_at': null,
+      'received_date': null,
+      'return_requirement': 'test',
+      'due_date': '2019-01-31',
+      'under_query': true,
+      'under_query_comment': 'Return was water damaged'
+    });
   });
 
   lab.test('The returns API should update a return', async () => {
