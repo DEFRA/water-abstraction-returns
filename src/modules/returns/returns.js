@@ -26,7 +26,9 @@ const returnsApi = new HAPIRestAPI({
     source: Joi.string(),
     metadata: Joi.string(),
     received_date: Joi.string().regex(isoDateRegex).allow(null),
-    return_requirement: Joi.string()
+    return_requirement: Joi.string(),
+    under_query: Joi.boolean(),
+    under_query_comment: Joi.string()
   },
   showSql: true
 });
