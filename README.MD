@@ -1,7 +1,5 @@
 [![Build Status](https://travis-ci.org/DEFRA/water-abstraction-returns.svg?branch=develop)](https://travis-ci.org/DEFRA/water-abstraction-returns)
 
-[![NSP Status](https://nodesecurity.io/orgs/cruikshanks/projects/393f7b86-dd32-4361-b608-19b643557323/badge)](https://nodesecurity.io/orgs/cruikshanks/projects/393f7b86-dd32-4361-b608-19b643557323)
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/c1266ede450e443bd8fc/maintainability)](https://codeclimate.com/github/DEFRA/water-abstraction-returns/maintainability)
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c1266ede450e443bd8fc/test_coverage)](https://codeclimate.com/github/DEFRA/water-abstraction-returns/test_coverage)
@@ -18,6 +16,10 @@ The service is developed in HAPI/NodeJS and backed by a Postgres SQL database.  
 This module was developed by the Water Resource Licensing Service team as part of a digital transformation project at [DEFRA](https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs), a department of the UK government
 
 To find out more about planned reforms to the abstraction licensing service, see the policy paper: [Water abstraction plan: Abstraction licensing service](https://www.gov.uk/government/publications/water-abstraction-plan-2017/water-abstraction-plan-abstraction-licensing-service)
+
+## Environment Variables
+
+The required environment variables for local development can be found in the [.env.example file](./.env.example).
 
 ## Contributing to this project
 
