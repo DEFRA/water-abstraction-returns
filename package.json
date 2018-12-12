@@ -1,5 +1,5 @@
 {
-  "name": "defra-water-abstraction-returns",
+  "name": "water-abstraction-returns",
   "version": "1.15.0",
   "description": "Service for water abstraction returns data",
   "main": "index.js",
