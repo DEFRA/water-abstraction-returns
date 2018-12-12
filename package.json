@@ -1,8 +1,12 @@
 {
-  "name": "water-abstraction",
+  "name": "defra-water-abstraction-returns",
   "version": "1.15.0",
   "description": "Service for water abstraction returns data",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DEFRA/water-abstraction-returns"
+  },
   "scripts": {
     "test": "lab",
     "test:travis": "lab -t 55 -m 0 --coverage-path ./src/ -r lcov -o coverage/lcov.info -r console -o stdout",
