@@ -18,7 +18,10 @@ const completedReturns = (filter = {}) => {
         return_id: '$returns.return_id$',
         version_number: 1
       }
-    }]
+    }],
+    sort: {
+      'created_at': +1
+    }
   };
 };
 

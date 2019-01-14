@@ -7,7 +7,7 @@ const lab = exports.lab = Lab.script();
 
 const { expect } = require('code');
 
-const { completedReturns } = require('../../../src/modules/reports/reports');
+const { completedReturns } = require('../../../../src/modules/reports/lib/reports');
 
 const filter = {
   regime: 'regime',
