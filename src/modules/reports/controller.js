@@ -1,20 +1,17 @@
-const queries = require('./queries.js');
+const builder = require('mongo-sql');
+const reports = require('./reports.js');
+const { pool } = require('../../lib/connectors/db');
 
-/**
- * Gets a list of completed returns, together with the user details
- * of who initially completed it
- * @param  {Object}  request - HAPI request instance
- * @param  {Object}  h       - HAPI reply helpers
- * @return {Promise}         - Resolves with report data in JSON format
- */
-const getCompletedReturnsReport = async (request, h) => {
-  const { regime, licenceType } = request.params;
-
-  const { rows: data, error = null } = await queries.getCompletedReturns(regime, licenceType);
-
-  return { data, error };
+const createRouteHandler = (reportType) => {
+  return async (request, h) => {
+    const filter = JSON.parse(request.query.filter || '{}');
+    const query = reports[reportType](filter);
+    const sql = builder.sql(query);
+    const { rows: data, error = null } = await pool.query(sql.toString(), sql.values);
+    return { data, error };
+  };
 };
 
 module.exports = {
-  getCompletedReturnsReport
+  createRouteHandler
 };
