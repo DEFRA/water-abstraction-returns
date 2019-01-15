@@ -1,4 +1,17 @@
 /**
+ * Gets base query for  reports, including type, table and filter
+ * @param  {Object} filter - mongo-sql `where` clause for filtering returns rows
+ * @return {Object}        - base mongo-sql query for reports
+ */
+const getBaseQuery = (filter) => {
+  return {
+    type: 'select',
+    table: 'returns.returns',
+    where: filter
+  };
+};
+
+/**
  * Generates a mongo-sql query object to find the user details of who
  * initially submitted returns which match the specified filter object
  * @param  {Object} filter - filter object
@@ -6,9 +19,7 @@
  */
 const returnUserDetails = (filter = {}) => {
   return {
-    type: 'select',
-    table: 'returns.returns',
-    where: filter,
+    ...getBaseQuery(filter),
     columns: ['returns.return_id', 'returns.licence_ref', 'returns.return_requirement', 'versions.created_at', 'versions.user_id', 'versions.user_type', 'versions.current'],
     joins: [{
       schema: 'returns',
@@ -33,9 +44,7 @@ const returnUserDetails = (filter = {}) => {
  */
 const returnStatuses = (filter = {}) => {
   return {
-    type: 'select',
-    table: 'returns.returns',
-    where: filter,
+    ...getBaseQuery(filter),
     columns: ['status', 'COUNT(*)'],
     groupBy: 'status'
   };
@@ -49,9 +58,7 @@ const returnStatuses = (filter = {}) => {
  */
 const returnLicenceCount = (filter = {}) => {
   return {
-    type: 'select',
-    table: 'returns.returns',
-    where: filter,
+    ...getBaseQuery(filter),
     columns: ['COUNT(DISTINCT(licence_ref))']
   };
 };
@@ -64,9 +71,7 @@ const returnLicenceCount = (filter = {}) => {
  */
 const returnFrequencies = (filter = {}) => {
   return {
-    type: 'select',
-    table: 'returns.returns',
-    where: filter,
+    ...getBaseQuery(filter),
     columns: ['returns_frequency', 'COUNT(*)'],
     groupBy: 'returns_frequency'
   };
