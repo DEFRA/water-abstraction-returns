@@ -22,7 +22,7 @@ const returnsApi = new HAPIRestAPI({
     end_date: Joi.string().regex(isoDateRegex),
     due_date: Joi.string().regex(isoDateRegex),
     returns_frequency: Joi.string().valid('year', 'month', 'quarter', 'week', 'day'),
-    status: Joi.string().valid('due', 'received', 'completed'),
+    status: Joi.string().valid('due', 'received', 'completed', 'void'),
     source: Joi.string(),
     metadata: Joi.string(),
     received_date: Joi.string().regex(isoDateRegex).allow(null),

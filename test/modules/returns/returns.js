@@ -5,7 +5,7 @@
 const Lab = require('lab');
 const lab = exports.lab = Lab.script();
 
-const Code = require('code');
+const { expect } = require('code');
 const server = require('../../../index');
 
 const { createTestReturn, deleteTestReturn } = require('./common');
@@ -13,13 +13,13 @@ const { createTestReturn, deleteTestReturn } = require('./common');
 lab.experiment('Check returns API', () => {
   lab.test('The returns API should accept a new return', async () => {
     const res = await createTestReturn();
-    Code.expect(res.statusCode).to.equal(201);
+    expect(res.statusCode).to.equal(201);
 
     const payload = JSON.parse(res.payload);
 
-    const { created_at: createdAt, ...rest} = payload.data;
+    const { created_at: createdAt, ...rest } = payload.data;
 
-    Code.expect(rest).to.equal({
+    expect(rest).to.equal({
       'return_id': 'test',
       'regime': 'water-test',
       'licence_type': 'abstraction-test',
@@ -56,7 +56,7 @@ lab.experiment('Check returns API', () => {
       }
     };
     const res = await server.inject(request);
-    Code.expect(res.statusCode).to.equal(200);
+    expect(res.statusCode).to.equal(200);
   });
 
   lab.test('The returns API should list returns for a particular regime/licence type', async () => {
@@ -73,16 +73,33 @@ lab.experiment('Check returns API', () => {
       }
     };
     const res = await server.inject(request);
-    Code.expect(res.statusCode).to.equal(200);
+    expect(res.statusCode).to.equal(200);
 
     const body = JSON.parse(res.payload);
 
-    Code.expect(body.data).to.be.an.array();
-    Code.expect(body.error).to.equal(null);
+    expect(body.data).to.be.an.array();
+    expect(body.error).to.equal(null);
+  });
+
+  lab.test('The returns API should update a return to void status', async () => {
+    const request = {
+      method: 'PATCH',
+      url: `/returns/1.0/returns/test`,
+      headers: {
+        Authorization: process.env.JWT_TOKEN
+      },
+      payload: {
+        status: 'void'
+      }
+    };
+    const res = await server.inject(request);
+    expect(res.statusCode).to.equal(200);
+    const body = JSON.parse(res.payload);
+    expect(body.data.status).to.equal('void');
   });
 
   lab.test('The returns API should delete a particular return', async () => {
     const res = await deleteTestReturn();
-    Code.expect(res.statusCode).to.equal(200);
+    expect(res.statusCode).to.equal(200);
   });
 });
