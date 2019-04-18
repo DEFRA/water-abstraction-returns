@@ -29,8 +29,7 @@ const returnsApi = new HAPIRestAPI({
     return_requirement: Joi.string(),
     under_query: Joi.boolean(),
     under_query_comment: Joi.string()
-  },
-  showSql: true
+  }
 });
 
 module.exports = returnsApi;

@@ -21,7 +21,6 @@ const versionsApi = new HAPIRestAPI({
     nil_return: Joi.boolean(),
     current: Joi.boolean()
   },
-  showSql: true,
   preInsert: async (data) => {
     // If current flag is true in submitted data, update other return versions
     // so that they are no longer current
