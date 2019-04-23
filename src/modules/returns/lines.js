@@ -25,8 +25,7 @@ const linesApi = new HAPIRestAPI({
     time_period: Joi.string().allow('day', 'week', 'month', 'year'),
     metadata: Joi.string(),
     reading_type: Joi.string().valid(['estimated', 'measured', 'assessed', 'derived'])
-  },
-  showSql: true
+  }
 });
 
 module.exports = linesApi;
