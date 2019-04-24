@@ -3,7 +3,6 @@
   "exclude_patterns": [
     "migrations",
     "test",
-    "node_modules",
-    "src/lib/logger/vendor/winston-airbrake.js"
+    "node_modules"
   ]
 }

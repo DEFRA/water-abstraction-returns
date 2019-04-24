@@ -3,7 +3,7 @@ const pg = require('pg');
 const config = require('../../../config.js');
 
 const { Pool } = pg;
-const logger = require('../logger');
+const { logger } = require('@envage/water-abstraction-helpers');
 
 // Set dates to format YYYY-MM-DD rather than full date/time string with timezone
 pg.types.setTypeParser(1082, 'text', function (val) {
