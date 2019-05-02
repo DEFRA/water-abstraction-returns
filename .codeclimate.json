@@ -2,7 +2,8 @@
   "version": 2,
   "exclude_patterns": [
     "migrations",
-    "test",
-    "node_modules"
+    "node_modules",
+    "scripts",
+    "test"
   ]
 }
