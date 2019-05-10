@@ -14,7 +14,7 @@
     "migrate": "node scripts/create-schema && db-migrate up --verbose",
     "migrate:down": "db-migrate down --verbose",
     "migrate:create": "db-migrate create --sql-file --",
-    "lint": "eslint ./src/**/*.js",
+    "lint": "eslint .",
     "codecov": "codecov",
     "version": "auto-changelog -p --commit-limit false && git add CHANGELOG.md"
   },
@@ -28,16 +28,15 @@
     "codecov": "^3.1.0",
     "db-migrate": "^0.10.1",
     "db-migrate-pg": "^0.2.5",
-    "eslint": "^4.17.0",
-    "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^6.0.0",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1",
+    "eslint": "5.16.0",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "9.0.1",
+    "eslint-plugin-promise": "4.1.1",
+    "eslint-plugin-standard": "4.0.0",
     "istanbul": "^0.4.5",
     "lab": "^15.5.0",
-    "sinon": "^6.3.5",
-    "standard": "^10.0.3"
+    "sinon": "^6.3.5"
   },
   "dependencies": {
     "@envage/hapi-pg-rest-api": "^4.1.1",
@@ -57,10 +56,5 @@
     "moment": "^2.20.1",
     "pg": "^7.5.0",
     "request": "^2.88.0"
-  },
-  "standard": {
-    "ignore": [
-      "node_modules/"
-    ]
   }
 }
