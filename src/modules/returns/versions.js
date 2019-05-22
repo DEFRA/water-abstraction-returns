@@ -25,8 +25,13 @@ const versionsApi = new HAPIRestAPI({
     // If current flag is true in submitted data, update other return versions
     // so that they are no longer current
     if (data.current) {
-      const query = `UPDATE returns.versions SET current=false WHERE return_id=$1`;
-      const params = [data.return_id];
+      const query = `
+        update returns.versions
+        set current=false
+        where return_id=$1
+        and version_number < $2;`;
+
+      const params = [data.return_id, data.version_number];
       await pool.query(query, params);
     }
     return data;
