@@ -8,12 +8,12 @@ const { expect } = require('code');
 const voidReturnsController = require('../../../src/modules/returns/void-returns');
 const { repo } = require('../../../src/modules/returns/returns');
 
-const createReturn = (licenceId, returnId) => {
+const createReturn = (licenceNumber, returnId) => {
   const ret = {
     return_id: returnId,
     regime: 'unit-test-regime',
     licence_type: 'unit-test',
-    licence_ref: licenceId,
+    licence_ref: licenceNumber,
     start_date: (new Date()).toISOString(),
     end_date: (new Date()).toISOString(),
     returns_frequency: 'month',
@@ -54,7 +54,7 @@ experiment('returns/voidReturnsController', () => {
 
       const request = {
         payload: {
-          licenceId: 'unit-test-licence-1',
+          licenceNumber: 'unit-test-licence-1',
           licenceType: 'unit-test',
           regime: 'unit-test-regime',
           validReturnIds: [

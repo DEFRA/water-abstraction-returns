@@ -12,7 +12,7 @@ const voidReturns = {
     description: 'For the given licence and valid return ids, marks other returns as void',
     validate: {
       payload: {
-        licenceId: Joi.string().required(),
+        licenceNumber: Joi.string().required(),
         licenceType: Joi.string().required(),
         regime: Joi.string().required(),
         validReturnIds: Joi.array().items(Joi.string())

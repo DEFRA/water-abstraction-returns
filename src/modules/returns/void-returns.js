@@ -7,12 +7,11 @@ const { repo } = require('../../modules/returns/returns');
  * @param {Object} request The HAPI request containng a valdated payload
  */
 const postVoidReturns = async request => {
-  const { regime, licenceType, licenceId, validReturnIds } = request.payload;
+  const { regime, licenceType, licenceNumber, validReturnIds } = request.payload;
   const filter = {
     regime,
     licence_type: licenceType,
-    licence_ref: licenceId,
-    source: 'NALD',
+    licence_ref: licenceNumber,
     return_id: {
       $nin: validReturnIds
     }
@@ -20,7 +19,7 @@ const postVoidReturns = async request => {
 
   try {
     const result = await repo.update(filter, { status: 'void' });
-    logger.info(`Void returns result for ${licenceId}`, result);
+    logger.info(`Void returns result for ${licenceNumber}`, result);
     return result;
   } catch (err) {
     logger.error('Failed to void returns', err);
