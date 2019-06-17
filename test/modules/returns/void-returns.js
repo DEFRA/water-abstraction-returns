@@ -40,7 +40,7 @@ const getAllTestReturns = () => {
 };
 
 experiment('returns/voidReturnsController', () => {
-  experiment('.postVoidReturns', () => {
+  experiment('.patchVoidReturns', () => {
     let updatedReturns;
     let result;
 
@@ -64,7 +64,7 @@ experiment('returns/voidReturnsController', () => {
         }
       };
 
-      result = await voidReturnsController.postVoidReturns(request);
+      result = await voidReturnsController.patchVoidReturns(request);
 
       ({ rows: updatedReturns } = await getAllTestReturns());
     });

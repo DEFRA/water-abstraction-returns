@@ -5,8 +5,8 @@ const voidReturnsController = require('./void-returns');
 const Joi = require('joi');
 
 const voidReturns = {
-  method: 'POST',
-  handler: voidReturnsController.postVoidReturns,
+  method: 'PATCH',
+  handler: voidReturnsController.patchVoidReturns,
   path: '/returns/1.0/void-returns',
   config: {
     description: 'For the given licence and valid return ids, marks other returns as void',

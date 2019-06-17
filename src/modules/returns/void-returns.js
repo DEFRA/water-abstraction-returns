@@ -6,7 +6,7 @@ const { repo } = require('../../modules/returns/returns');
  * returns ids for the licence id have a status of void.
  * @param {Object} request The HAPI request containng a valdated payload
  */
-const postVoidReturns = async request => {
+const patchVoidReturns = async request => {
   const { regime, licenceType, licenceNumber, validReturnIds } = request.payload;
   const filter = {
     regime,
@@ -27,4 +27,4 @@ const postVoidReturns = async request => {
   }
 };
 
-exports.postVoidReturns = postVoidReturns;
+exports.patchVoidReturns = patchVoidReturns;
