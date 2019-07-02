@@ -1,5 +1,5 @@
 const HAPIRestAPI = require('@envage/hapi-pg-rest-api');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 const { pool } = require('../../lib/connectors/db');
 
 const isoDateRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
