@@ -1,6 +1,6 @@
 {
   "name": "water-abstraction-returns",
-  "version": "1.25.0",
+  "version": "1.25.1",
   "description": "Service for water abstraction returns data",
   "main": "index.js",
   "repository": {
@@ -39,7 +39,7 @@
     "sinon": "^7.3.2"
   },
   "dependencies": {
-    "@envage/hapi-pg-rest-api": "^4.1.1",
+    "@envage/hapi-pg-rest-api": "^5.0.0",
     "@envage/water-abstraction-helpers": "^3.0.0",
     "blipp": "^3.0.0",
     "boom": "^5.2.0",
