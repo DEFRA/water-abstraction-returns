@@ -3,8 +3,8 @@ const {
   test,
   beforeEach,
   afterEach
-} = exports.lab = require('lab').script();
-const { expect } = require('code');
+} = exports.lab = require('@hapi/lab').script();
+const { expect } = require('@hapi/code');
 const voidReturnsController = require('../../../src/modules/returns/void-returns');
 const { repo } = require('../../../src/modules/returns/returns');
 
