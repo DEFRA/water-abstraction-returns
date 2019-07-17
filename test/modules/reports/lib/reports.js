@@ -2,10 +2,10 @@
  * Test creating/fetching a return
  */
 'use strict';
-const Lab = require('lab');
+const Lab = require('@hapi/lab');
 const lab = exports.lab = Lab.script();
 
-const { expect } = require('code');
+const { expect } = require('@hapi/code');
 
 const reports = require('../../../../src/modules/reports/lib/reports');
 

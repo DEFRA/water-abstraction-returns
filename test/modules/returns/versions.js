@@ -5,9 +5,9 @@ const {
   test,
   beforeEach,
   afterEach
-} = exports.lab = require('lab').script();
+} = exports.lab = require('@hapi/lab').script();
 
-const { expect } = require('code');
+const { expect } = require('@hapi/code');
 const server = require('../../../index');
 
 const { returns, versions } = require('./common');
