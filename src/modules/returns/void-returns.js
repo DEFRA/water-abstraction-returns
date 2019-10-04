@@ -19,7 +19,7 @@ const patchVoidReturns = async request => {
 
   try {
     const result = await repo.update(filter, { status: 'void' });
-    logger.info(`Void returns result for ${licenceNumber}`, result);
+    logger.info(`Void returns result for ${licenceNumber}`, result.rowCount);
     return result;
   } catch (err) {
     logger.error('Failed to void returns', err);
