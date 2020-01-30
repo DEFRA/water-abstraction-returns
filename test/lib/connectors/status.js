@@ -13,17 +13,17 @@ const sandbox = sinon.createSandbox();
 const { expect } = require('@hapi/code');
 
 const statusConnector = require('../../../src/lib/connectors/status');
-const db = require('../../../src/lib/connectors/db');
+const { pool } = require('../../../src/lib/connectors/db');
 
 experiment('lib/connectors/status', () => {
   experiment('.getStatus', () => {
     let response;
 
     beforeEach(async () => {
-      sandbox.stub(db, 'query').resolves({
-        data: {
+      sandbox.stub(pool, 'query').resolves({
+        rows: [{
           hello: 'world'
-        }
+        }]
       });
       response = await statusConnector.getStatus();
     });

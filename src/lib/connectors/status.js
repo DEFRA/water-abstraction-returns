@@ -1,13 +1,13 @@
 require('dotenv').config();
-const { query } = require('./db');
+const { pool } = require('./db');
 const pkg = require('../../../package.json');
 
 const getStatus = async () => {
   try {
-    const { data, error } = await query('select hello from returns.status;');
+    const { rows: data } = await pool.query('select hello from returns.status;');
     return {
       data,
-      error,
+      error: null,
       version: pkg.version
     };
   } catch (error) {

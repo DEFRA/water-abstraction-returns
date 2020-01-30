@@ -1,9 +1,9 @@
 const ACCEPTANCE_TEST_SOURCE = 'acceptance-test-setup';
-const db = require('../../lib/connectors/db');
+const { pool } = require('../../lib/connectors/db');
 const config = require('../../../config');
 
 const deleteLines = () => {
-  return db.query(`
+  return pool.query(`
     delete
     from returns.lines l
     using returns.versions v, returns.returns r
@@ -17,7 +17,7 @@ const deleteLines = () => {
 };
 
 const deleteVersions = () => {
-  return db.query(`
+  return pool.query(`
     delete
     from returns.versions v
     using returns.returns r
@@ -29,7 +29,7 @@ const deleteVersions = () => {
 };
 
 const deleteReturns = () => {
-  return db.query(`
+  return pool.query(`
     delete
     from returns.returns
     where source = '${ACCEPTANCE_TEST_SOURCE}';
