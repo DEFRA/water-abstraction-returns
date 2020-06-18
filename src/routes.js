@@ -9,5 +9,5 @@ module.exports = [
   ...returnsRoutes,
   ...reportsRoutes,
   ...acceptanceTestRoutes,
-  ...kpiReportingRoutes
+  ...Object.values(kpiReportingRoutes)
 ];

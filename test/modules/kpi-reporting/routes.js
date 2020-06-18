@@ -2,10 +2,12 @@
 
 const {
   experiment,
-  test
+  test,
+  beforeEach
 } = exports.lab = require('@hapi/lab').script();
 const { expect } = require('@hapi/code');
-const server = require('../../../index');
+const routes = require('../../../src/modules/kpi-reporting/routes');
+const { createServerForRoute } = require('../../helpers');
 
 const createRequest = (queryString) => {
   return {
@@ -18,7 +20,12 @@ const createRequest = (queryString) => {
 };
 
 experiment('/modules/kpi-reporting/routes', () => {
-  experiment('when the correct query string vlaues are received', () => {
+  let server;
+  beforeEach(async () => {
+    server = createServerForRoute(routes.getReturnsKpiBySeason);
+  });
+
+  experiment('when the correct query string values are received', () => {
     test('responds with a status code of 200', async () => {
       const request = createRequest('startDate=2019-01-01&endDate=2019-12-31&isSummer=true');
       const response = await server.inject(request);
