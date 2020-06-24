@@ -15,7 +15,7 @@ experiment('./lib/repo/kpi-reporting', () => {
   });
 
   const query = `
-  SELECT count(r.return_id) as total,
+  SELECT count(r.return_id)::integer as total,
   user_type, 
   status,
   CASE WHEN received_date <= due_date THEN true ELSE false END AS on_time

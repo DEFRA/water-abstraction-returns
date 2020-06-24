@@ -4,7 +4,7 @@ const { pool } = require('../connectors/db');
 
 const findReturnsKpiDataBySeason = async (startDate, endDate, isSummer) => {
   const sql = `
-  SELECT count(r.return_id) as total,
+  SELECT count(r.return_id)::integer as total,
   user_type, 
   status,
   CASE WHEN received_date <= due_date THEN true ELSE false END AS on_time
