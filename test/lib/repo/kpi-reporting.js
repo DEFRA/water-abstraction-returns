@@ -15,19 +15,21 @@ experiment('./lib/repo/kpi-reporting', () => {
   });
 
   const query = `
-  SELECT count(r.return_id)::integer as total,
-  user_type, 
-  status,
-  CASE WHEN received_date <= due_date THEN true ELSE false END AS on_time
+  SELECT
+    SUM(CASE WHEN user_type IS NULL AND status = 'due' THEN 1 ELSE 0 END) AS due,
+    SUM(CASE WHEN user_type = 'internal' AND status = 'completed' AND received_date <= due_date THEN 1 ELSE 0 END) AS internal_on_time,
+    SUM(CASE WHEN user_type = 'internal' AND status = 'completed' AND received_date > due_date THEN 1 ELSE 0 END) AS internal_late,
+    SUM(CASE WHEN user_type = 'external' AND status = 'completed' AND received_date <= due_date THEN 1 ELSE 0 END) AS external_on_time,
+    SUM(CASE WHEN user_type = 'external' AND status = 'completed' AND received_date > due_date THEN 1 ELSE 0 END) AS external_late
   FROM returns.returns as r
-  LEFT JOIN (SELECT user_type, return_id FROM returns.versions 
+  LEFT JOIN
+  (SELECT user_type, return_id FROM returns.versions 
   WHERE current = true
   ) AS v ON
   v.return_id = r.return_id
   WHERE r.status <> 'void'
   AND r.start_date >= 'undefined' AND r.end_date <= 'undefined'
-  AND (r.metadata->'isSummer') = 'undefined'
-  GROUP BY user_type, status, on_time;`;
+  AND (r.metadata->'isSummer') = 'undefined';`;
 
   test('the correct params are used to call db pool query', async () => {
     await repos.findReturnsKpiDataBySeason();
