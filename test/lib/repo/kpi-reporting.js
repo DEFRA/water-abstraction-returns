@@ -16,11 +16,11 @@ experiment('./lib/repo/kpi-reporting', () => {
 
   const query = `
   SELECT
-    SUM(CASE WHEN user_type IS NULL AND status = 'due' THEN 1 ELSE 0 END) AS due,
-    SUM(CASE WHEN user_type = 'internal' AND status = 'completed' AND received_date <= due_date THEN 1 ELSE 0 END) AS internal_on_time,
-    SUM(CASE WHEN user_type = 'internal' AND status = 'completed' AND received_date > due_date THEN 1 ELSE 0 END) AS internal_late,
-    SUM(CASE WHEN user_type = 'external' AND status = 'completed' AND received_date <= due_date THEN 1 ELSE 0 END) AS external_on_time,
-    SUM(CASE WHEN user_type = 'external' AND status = 'completed' AND received_date > due_date THEN 1 ELSE 0 END) AS external_late
+    SUM(CASE WHEN user_type IS NULL AND status = 'due' THEN 1 ELSE 0 END)::integer AS due,
+    SUM(CASE WHEN user_type = 'internal' AND status = 'completed' AND received_date <= due_date THEN 1 ELSE 0 END)::integer AS internal_on_time,
+    SUM(CASE WHEN user_type = 'internal' AND status = 'completed' AND received_date > due_date THEN 1 ELSE 0 END)::integer AS internal_late,
+    SUM(CASE WHEN user_type = 'external' AND status = 'completed' AND received_date <= due_date THEN 1 ELSE 0 END)::integer AS external_on_time,
+    SUM(CASE WHEN user_type = 'external' AND status = 'completed' AND received_date > due_date THEN 1 ELSE 0 END)::integer AS external_late
   FROM returns.returns as r
   LEFT JOIN
   (SELECT user_type, return_id FROM returns.versions 
