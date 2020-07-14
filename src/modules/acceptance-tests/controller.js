@@ -1,4 +1,3 @@
-const ACCEPTANCE_TEST_SOURCE = 'acceptance-test-setup';
 const { pool } = require('../../lib/connectors/db');
 const config = require('../../../config');
 
@@ -12,7 +11,7 @@ const deleteLines = () => {
       and
       v.return_id = r.return_id
       and
-      r.source = '${ACCEPTANCE_TEST_SOURCE}';
+      r.is_test = true;
   `);
 };
 
@@ -24,7 +23,7 @@ const deleteVersions = () => {
     where
       v.return_id = r.return_id
       and
-      r.source = '${ACCEPTANCE_TEST_SOURCE}';
+       r.is_test = true;
   `);
 };
 
@@ -32,7 +31,7 @@ const deleteReturns = () => {
   return pool.query(`
     delete
     from returns.returns
-    where source = '${ACCEPTANCE_TEST_SOURCE}';
+    where is_test = true;
   `);
 };
 
