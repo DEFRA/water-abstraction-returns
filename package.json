@@ -47,6 +47,7 @@
     "@hapi/hoek": "^8.5.1",
     "@hapi/joi": "^15.1.1",
     "blipp": "^4.0.1",
+    "deep-map-keys": "^2.0.1",
     "dotenv": "^4.0.0",
     "good-winston": "^4.0.0",
     "hapi-auth-jwt2": "^8.8.1",
