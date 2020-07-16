@@ -28,13 +28,13 @@ experiment('./lib/repo/kpi-reporting', () => {
   ) AS v ON
   v.return_id = r.return_id
   WHERE r.status <> 'void'
-  AND r.start_date >= 'undefined' AND r.end_date <= 'undefined'
-  AND (r.metadata->'isSummer') = 'undefined';`;
+  AND r.start_date >= $1 AND r.end_date <= $2
+  AND (r.metadata->'isSummer') = $3;`;
 
   test('the correct params are used to call db pool query', async () => {
     await repos.findReturnsKpiDataBySeason();
     expect(pool.query.lastCall.args[0]).to.be.equal(query);
-    expect(pool.query.lastCall.args.length).to.be.equal(1);
+    expect(pool.query.lastCall.args.length).to.be.equal(2);
   });
 
   test('the correct data shape is returned', async () => {
