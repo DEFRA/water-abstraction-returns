@@ -17,10 +17,11 @@ const findReturnsKpiDataBySeason = async (startDate, endDate, isSummer) => {
   ) AS v ON
   v.return_id = r.return_id
   WHERE r.status <> 'void'
-  AND r.start_date >= '${startDate}' AND r.end_date <= '${endDate}'
-  AND (r.metadata->'isSummer') = '${isSummer}';`;
+  AND r.start_date >= $1 AND r.end_date <= $2
+  AND (r.metadata->'isSummer') = $3;`;
 
-  const data = await pool.query(sql);
+  const params = [startDate, endDate, isSummer];
+  const data = await pool.query(sql, params);
   return { data: data.rows };
 };
 
