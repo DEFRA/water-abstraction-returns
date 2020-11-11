@@ -1,11 +1,11 @@
 name: CI
 
-on: 
+on:
   push:
     branches:
       - develop
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [ opened, synchronize, reopened ]
 
 jobs:
   build:
@@ -83,22 +83,25 @@ jobs:
       - name: Run lint check
         run: |
           npm run lint
-          
+      - name: Run tests
+        uses: marsam/codeclimate-action@master
+        with:
+          command: npm run test:ci
+          reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
       - name: Create database
         run: |
           PGPASSWORD=water psql -U water -tc "SELECT 'CREATE DATABASE water' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'water')"
       - name: Run database migrations
         run: |
           npm run migrate
-    
+
       - name: Unit tests
         run: |
-          npm run test:travis
-          
+          npm run test
+
       - name: Run unit tests
         run: |
           npm run test
-          
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
