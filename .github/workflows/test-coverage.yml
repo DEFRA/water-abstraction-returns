@@ -7,16 +7,8 @@ on:
     types: [ opened, synchronize, reopened ]
 jobs:
   coverage:
-    name: coverage
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
-        with:
-          node-version: '12'
-      - run: npm install
-      - uses: paambaati/codeclimate-action@v2.2.4
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.7.4
         env:
           CC_TEST_REPORTER_ID: 6daa14b061030394f1617a72fdfd63509195cfc18fa2aabb1ea08a6132a892a5
-        with:
-          coverageCommand: npm test:ci
