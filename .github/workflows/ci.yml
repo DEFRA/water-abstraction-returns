@@ -92,7 +92,7 @@ jobs:
 
       - name: Unit tests
         run: |
-          npm run test:travis
+          npm run test
 
       - name: Run unit tests
         run: |
