@@ -1,4 +1,4 @@
-name: build
+name: testcoverage
 on:
   push:
     branches:
