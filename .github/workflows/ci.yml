@@ -92,10 +92,10 @@ jobs:
           npm run migrate
 
       - name: Run tests
-          uses: marsam/codeclimate-action@master
-          with:
-            command: npm run test:travis
-            reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
+        uses: marsam/codeclimate-action@master
+        with:
+          command: npm run test:travis
+          reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
             
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
