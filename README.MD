@@ -1,9 +1,4 @@
-[![Build Status](https://travis-ci.org/DEFRA/water-abstraction-returns.svg?branch=develop)](https://travis-ci.org/DEFRA/water-abstraction-returns)
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/c1266ede450e443bd8fc/maintainability)](https://codeclimate.com/github/DEFRA/water-abstraction-returns/maintainability)
-
-[![Test Coverage](https://api.codeclimate.com/v1/badges/c1266ede450e443bd8fc/test_coverage)](https://codeclimate.com/github/DEFRA/water-abstraction-returns/test_coverage)
-
+![Build](https://github.com/DEFRA/water-abstraction-returns/workflows/Build/badge.svg)
 
 # Water Abstraction Returns
 
