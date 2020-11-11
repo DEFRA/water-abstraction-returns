@@ -86,7 +86,7 @@ jobs:
       - name: Run tests
         uses: marsam/codeclimate-action@master
         with:
-          command: npm run test:ci
+          command: npm run test:travis
           reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
       - name: Create database
         run: |
