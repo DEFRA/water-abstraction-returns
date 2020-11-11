@@ -15,10 +15,11 @@ jobs:
       # These need to be duplicated in services section for postgres. Unfortunately, there is not a way to reuse them
       PGUSER: water
       PGHOST: localhost
+      PGPASSWORD: water
       PGPORT: 5432
       PGDATABASE: water
       ENVIRONMENT: dev
-      DATABASE_URL: postgres://water:@localhost:5432/water
+      DATABASE_URL: postgres://water:water@localhost:5432/water
       JWT_SECRET: secret
       JWT_TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNH0.MOREC6-Kszb9bDFw0O1UKywpnkcP-c5cPjASMpjk8Po
       NOTIFY_KEY: somerealnotifykey-00000000-0000-0000-0000-000000000000-00000000-0000-0000-0000-000000000000
@@ -33,6 +34,7 @@ jobs:
         env:
           POSTGRES_USER: water
           POSTGRES_DB: water
+          POSTGRES_PASSWORD: water
         # Maps tcp port 5432 on service container to the host
         ports:
           - 5432:5432
@@ -84,7 +86,7 @@ jobs:
           
       - name: Create database
         run: |
-          psql -c 'create database water;' -U water
+          PGPASSWORD=water psql -c 'create database water;' -U water
           
       - name: Run database migrations
         run: |
