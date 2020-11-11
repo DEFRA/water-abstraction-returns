@@ -83,11 +83,7 @@ jobs:
       - name: Run lint check
         run: |
           npm run lint
-      - name: Run tests
-        uses: marsam/codeclimate-action@master
-        with:
-          command: npm run test:travis
-          reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
+
       - name: Create database
         run: |
           PGPASSWORD=water psql -U water -tc "SELECT 'CREATE DATABASE water' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'water')"
@@ -95,13 +91,12 @@ jobs:
         run: |
           npm run migrate
 
-      - name: Unit tests
-        run: |
-          npm run test
-
-      - name: Run unit tests
-        run: |
-          npm run test
+      - name: Run tests
+          uses: marsam/codeclimate-action@master
+          with:
+            command: npm run test:travis
+            reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
+            
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
