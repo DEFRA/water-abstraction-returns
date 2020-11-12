@@ -96,16 +96,13 @@ jobs:
         run: |
           npm run test:travis
 
-      - name: Upload coverage to Code Climate
-        run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-          ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.info
-          ./cc-test-reporter upload-coverage
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.7.4
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          GIT_BRANCH: ${{ secrets.GITHUB_REF }}
-          GIT_COMMIT: ${{ secrets.GITHUB_SHA }}
+        with:
+          coverageCommand: npm run test:travis
+          debug: true
 
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
