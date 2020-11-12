@@ -2,6 +2,5 @@
 /migration/node_modules/
 /migration/database.json
 .env
-lcov.info
 *.swp
 .vscode
