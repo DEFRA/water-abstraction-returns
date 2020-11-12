@@ -92,13 +92,17 @@ jobs:
           npm run migrate
 
       - name: Run tests
-          uses: marsam/codeclimate-action@master
-          with:
-            command: npm run test:travis
-            reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
+        run: npm run test:travis
+
+      - name: Coverage
+        uses: romeovs/lcov-reporter-action@v0.2.16
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          lcov-file: ./coverage/lcov.info
 
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This is provided automatically by GitHub
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # This needs to be set in your repo; settings -> secrets
+
