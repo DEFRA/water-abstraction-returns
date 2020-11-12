@@ -1,5 +1,7 @@
 ![Build](https://github.com/DEFRA/water-abstraction-returns/workflows/Build/badge.svg)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c1266ede450e443bd8fc/test_coverage)](https://codeclimate.com/github/DEFRA/water-abstraction-returns/test_coverage)
+
 # Water Abstraction Returns
 
 The water-abstraction-returns service is a evolving solution to initially handle the returns required by water abstraction licences.
