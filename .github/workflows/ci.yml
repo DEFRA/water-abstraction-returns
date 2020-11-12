@@ -99,6 +99,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           lcov-file: ./coverage/lcov.info
+          lcov-base: https://github.com/DEFRA/water-abstraction-returns/coverage/lcov.info
 
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
