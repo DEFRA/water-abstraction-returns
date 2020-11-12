@@ -18,11 +18,6 @@
     "codecov": "codecov",
     "version": "auto-changelog -p --commit-limit false && git add CHANGELOG.md"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run test:travis"
-    }
-  },
   "engines": {
     "node": ">=8.0"
   },
