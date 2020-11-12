@@ -83,7 +83,11 @@ jobs:
       - name: Run lint check
         run: |
           npm run lint
-
+      - name: Run tests
+        uses: marsam/codeclimate-action@master
+        with:
+          command: npm run test:travis
+          reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
       - name: Create database
         run: |
           PGPASSWORD=water psql -U water -tc "SELECT 'CREATE DATABASE water' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'water')"
@@ -96,9 +100,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This is provided automatically by GitHub
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # This needs to be set in your repo; settings -> secrets
-  coverage:
-    name: Run tests
-    uses: marsam/codeclimate-action@master
-    with:
-      command: npm run test:travis
-      reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
