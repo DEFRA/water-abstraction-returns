@@ -100,8 +100,8 @@ jobs:
           ./cc-test-reporter upload-coverage
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          GIT_BRANCH: ${{ GITHUB_REF }}
-          GIT_COMMIT: ${{ GITHUB_SHA }}
+          GIT_BRANCH: ${{ secrets.GITHUB_REF }}
+          GIT_COMMIT: ${{ secrets.GITHUB_SHA }}
 
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
