@@ -87,23 +87,26 @@ jobs:
       - name: Create database
         run: |
           PGPASSWORD=water psql -U water -tc "SELECT 'CREATE DATABASE water' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'water')"
+
       - name: Run database migrations
         run: |
           npm run migrate
 
-      - name: Run tests
-        run: npm run test:travis
-
-      - name: Coverage
-        uses: romeovs/lcov-reporter-action@v0.2.17
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.7.4
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          lcov-file: ./coverage/lcov.info
-          lcov-base: ./coverage/lcov.info
+          coverageCommand: npm run test:travis
+          debug: true
 
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This is provided automatically by GitHub
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # This needs to be set in your repo; settings -> secrets
-
+        with:
+          args: >
+            -Dsonar.organization=defra
+            -Dsonar.projectKey=DEFRA_water-abstraction-returns
+            -Dsonar.javascript.lcov.reportPaths=**/coverage/lcov.info
