@@ -92,10 +92,6 @@ jobs:
         run: |
           npm run migrate
 
-      - name: Run tests
-        run: |
-          npm run test:travis
-
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v2.7.4
         env:
