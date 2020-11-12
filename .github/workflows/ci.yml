@@ -93,10 +93,16 @@ jobs:
           npm run migrate
 
       - name: Run tests
-        uses: marsam/codeclimate-action@master
-        with:
-          command: npm run test:travis
-          reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
+        script: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter format-coverage -t lcov -o .codeclimate.json coverage/lcov.info
+          ./cc-test-reporter upload-coverage
+        displayName: Upload coverage to Code Climate
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          GIT_BRANCH: ${{ GITHUB_REF }}
+          GIT_COMMIT: ${{ GITHUB_SHA }}
 
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
