@@ -1,6 +1,8 @@
-![Build](https://github.com/DEFRA/water-abstraction-returns/workflows/Build/badge.svg)
-
-[![Test Coverage](https://api.codeclimate.com/v1/badges/c1266ede450e443bd8fc/test_coverage)](https://codeclimate.com/github/DEFRA/water-abstraction-returns/test_coverage)
+|               |              |  
+|---------------|--------------|
+| Build         |  ![CI](https://github.com/DEFRA/water-abstraction-returns/workflows/CI/badge.svg) |
+| Test coverage | [![Test Coverage](https://api.codeclimate.com/v1/badges/c1266ede450e443bd8fc/test_coverage)](https://codeclimate.com/github/DEFRA/water-abstraction-returns/test_coverage)  |
+| Quality check |  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_water-abstraction-returns&metric=alert_status)](https://sonarcloud.io/dashboard?id=DEFRA_water-abstraction-returns) |
 
 # Water Abstraction Returns
 
