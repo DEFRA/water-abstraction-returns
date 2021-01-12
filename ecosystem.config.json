@@ -5,6 +5,7 @@
       "ignore_watch": [
         "node_modules"
       ],
+      "script": "index.js",
       "env": {
         "watch": true
       },
@@ -12,8 +13,7 @@
         "watch": false,
         "instances" : "max",
         "exec_mode" : "cluster"
-      },
-      "script": "index.js"
+      }
     }
   ]
 }
