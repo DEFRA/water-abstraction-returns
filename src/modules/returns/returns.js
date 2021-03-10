@@ -29,7 +29,7 @@ const returnsApi = new HAPIRestAPI({
     return_requirement: Joi.string(),
     under_query: Joi.boolean(),
     under_query_comment: Joi.string(),
-    is_test: Joi.boolean().default(false)
+    is_test: Joi.boolean()
   }
 });
 
