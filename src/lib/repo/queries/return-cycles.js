@@ -1,6 +1,6 @@
 'use strict';
 
-exports.returnCycleReport = `
+exports.returnCycleStatsReport = `
 select * from returns.return_cycles c
 left join (
   select 

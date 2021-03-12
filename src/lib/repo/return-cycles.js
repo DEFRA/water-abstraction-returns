@@ -4,7 +4,7 @@ const { pool } = require('../connectors/db');
 
 const queries = require('./queries/return-cycles');
 
-const getReturnCycleReport = () => pool.query(queries.returnCycleReport);
+const getReturnCycleStatsReport = () => pool.query(queries.returnCycleStatsReport);
 
 /**
  * Upserts returns.return_cycles to either get or create a return cycle
@@ -22,5 +22,5 @@ const getOrCreateReturnCycle = async (startDate, endDate, isSummer) => {
   return row;
 };
 
-exports.getReturnCycleReport = getReturnCycleReport;
+exports.getReturnCycleStatsReport = getReturnCycleStatsReport;
 exports.getOrCreateReturnCycle = getOrCreateReturnCycle;
