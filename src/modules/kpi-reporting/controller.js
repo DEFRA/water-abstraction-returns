@@ -2,17 +2,8 @@
 const repo = require('../../lib/repo/kpi-reporting');
 const Boom = require('@hapi/boom');
 const moment = require('moment');
-const { camelCase } = require('lodash');
-const deepMapKeys = require('deep-map-keys');
 
-/**
- * Camel cases the keys of an object, or an array of objects.
- * @param {Array|Object} data The array of objects, or object that is to
- * have it's keys camel cased
- */
-const camelCaseKeys = data => {
-  return deepMapKeys(data, camelCase);
-};
+const camelCaseKeys = require('../../lib/camel-case-keys');
 
 const getReturnsKpiDataBySeason = async (request) => {
   const startDate = moment(request.query.startDate).format('YYYY-MM-DD');

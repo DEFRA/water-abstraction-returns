@@ -15,10 +15,15 @@ left join (
     count(*) filter (where returns_frequency='month') as monthly_count,
     count(distinct licence_ref) as unique_licence_count
   from returns.returns r
-  where r.return_cycle_id is not null
+  where r.return_cycle_id in (
+    select return_cycle_id 
+      from returns.return_cycles c
+      where c.start_date>=$1
+    )
   group by r.return_cycle_id
 ) r
 on c.return_cycle_id=r.return_cycle_id
+where c.start_date>=$1 
 order by c.start_date;
 `;
 

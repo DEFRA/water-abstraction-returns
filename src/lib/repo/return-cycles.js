@@ -4,7 +4,10 @@ const { pool } = require('../connectors/db');
 
 const queries = require('./queries/return-cycles');
 
-const getReturnCycleStatsReport = () => pool.query(queries.returnCycleStatsReport);
+const getReturnCycleStatsReport = async startDate => {
+  const { rows } = await pool.query(queries.returnCycleStatsReport, [startDate]);
+  return rows;
+};
 
 /**
  * Upserts returns.return_cycles to either get or create a return cycle
