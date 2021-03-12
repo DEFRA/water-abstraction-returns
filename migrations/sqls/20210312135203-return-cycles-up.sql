@@ -7,7 +7,8 @@ create table returns.return_cycles (
   is_summer boolean not null,
   is_submitted_in_wrls boolean not null,
   date_created timestamp without time zone NOT NULL DEFAULT now(),
-  date_updated timestamp without time zone NOT NULL DEFAULT now()
+  date_updated timestamp without time zone NOT NULL DEFAULT now(),
+  constraint unq_cycle unique (start_date, end_date, is_summer)
 );
 
 -- Create cycles starting when WRLS can show returns (2008-04-01 onwards)

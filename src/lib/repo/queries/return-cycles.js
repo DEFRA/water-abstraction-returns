@@ -1,3 +1,5 @@
+'use strict';
+
 exports.returnCycleReport = `
 select * from returns.return_cycles c
 left join (
@@ -18,4 +20,18 @@ left join (
 ) r
 on c.return_cycle_id=r.return_cycle_id
 order by c.start_date;
+`;
+
+exports.upsert = `
+insert into returns.return_cycles (
+  start_date, end_date, due_date,
+  is_summer, is_submitted_in_wrls, date_created
+)
+values (
+  $1, $2, $2::date + interval '28 day',
+  $3, $2 >= '2018-10-31'::date, now()
+)
+on conflict (start_date, end_date, is_summer)
+  do update set date_updated=now()
+  returning *;
 `;
