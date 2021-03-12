@@ -60,5 +60,6 @@ update returns.returns
       and r.end_date<= c.end_date 
       and (r.metadata->>'isSummer')::boolean=c.is_summer
     where r.start_date>='2008-04-01'
-  ) c;
+  ) c
+  where returns.return_id=c.return_id;
 
