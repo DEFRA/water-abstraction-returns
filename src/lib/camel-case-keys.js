@@ -1,7 +1,7 @@
 'use strict';
 
 const { camelCase } = require('lodash');
-const deepMapKeys = require('deep-map-keys');
+const deepMapKeys = require('map-keys-deep-lodash');
 
 /**
  * Camel cases the keys of an object, or an array of objects.
@@ -9,7 +9,7 @@ const deepMapKeys = require('deep-map-keys');
  * have it's keys camel cased
  */
 const camelCaseKeys = data => {
-  return deepMapKeys(data, camelCase);
+  return deepMapKeys(data, (value, key) => camelCase(key));
 };
 
 module.exports = camelCaseKeys;
