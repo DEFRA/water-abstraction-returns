@@ -25,5 +25,29 @@ const getOrCreateReturnCycle = async (startDate, endDate, isSummer) => {
   return row;
 };
 
+/**
+ * Gets return cycle by ID
+ *
+ * @param {String} id - return cycle ID
+ * @returns {Promise<Object>}
+ */
+const getReturnCycle = async id => {
+  const { rows: [row] } = await pool.query(queries.getReturnCycle, [id]);
+  return row;
+};
+
+/**
+ * Gets a report of returns for a given cycle
+ *
+ * @param {String} id - return cycle ID
+ * @returns {Promise<Array>}
+ */
+const getReturnCycleReturns = async id => {
+  const { rows: [row] } = await pool.query(queries.getReturnCycleReturns, [id]);
+  return row;
+};
+
 exports.getReturnCycleStatsReport = getReturnCycleStatsReport;
 exports.getOrCreateReturnCycle = getOrCreateReturnCycle;
+exports.getReturnCycle = getReturnCycle;
+exports.getReturnCycleReturns = getReturnCycleReturns;
