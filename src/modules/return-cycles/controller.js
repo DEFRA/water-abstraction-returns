@@ -36,11 +36,11 @@ const getReturnCycle = async request => {
 const getReturnCycleReturns = async request => {
   const { returnCycleId } = request.params;
 
-  const returnCycle = await repo.getReturnCycleReturns(returnCycleId);
+  const returns = await repo.getReturnCycleReturns(returnCycleId);
 
-  return returnCycle
-    ? camelCaseKeys(returnCycle)
-    : Boom.notFound(`Return cycle ${returnCycleId} not found`);
+  return {
+    data: returns.map(camelCaseKeys)
+  };
 };
 
 exports.getReturnCyclesReport = getReturnCyclesReport;

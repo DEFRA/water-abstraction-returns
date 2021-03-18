@@ -43,8 +43,8 @@ const getReturnCycle = async id => {
  * @returns {Promise<Array>}
  */
 const getReturnCycleReturns = async id => {
-  const { rows: [row] } = await pool.query(queries.getReturnCycleReturns, [id]);
-  return row;
+  const { rows } = await pool.query(queries.getReturnCycleReturns, [id]);
+  return rows;
 };
 
 exports.getReturnCycleStatsReport = getReturnCycleStatsReport;
