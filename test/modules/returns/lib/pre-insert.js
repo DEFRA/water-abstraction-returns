@@ -13,10 +13,10 @@ const { expect } = require('@hapi/code');
 
 const sandbox = require('sinon').createSandbox();
 
-const createReturn = (startDate, endDate, isSummer) => ({
+const createReturn = (startDate, endDate, isSummer, isStringified = true) => ({
   start_date: startDate,
   end_date: endDate,
-  metadata: JSON.stringify({ isSummer })
+  metadata: isStringified ? JSON.stringify({ isSummer }) : { isSummer }
 });
 
 experiment('modules/returns/lib/pre-insert', () => {
@@ -46,7 +46,6 @@ experiment('modules/returns/lib/pre-insert', () => {
       });
 
       test('uses correct cycle dates for a full winter/all year return', async () => {
-        console.log(returnCycleRepo.getOrCreateReturnCycle.lastCall.args);
         expect(returnCycleRepo.getOrCreateReturnCycle.calledWith({
           startDate: '2018-04-01',
           endDate: '2019-03-31',
@@ -56,6 +55,21 @@ experiment('modules/returns/lib/pre-insert', () => {
 
       test('resolves with the cycle ID', async () => {
         expect(result.return_cycle_id).to.equal(returnCycleId);
+      });
+    });
+
+    experiment('for a full winter/all year return where the metadata is not JSON stringified', async () => {
+      beforeEach(async () => {
+        const ret = createReturn('2018-04-01', '2019-03-31', false, false);
+        result = await preInsert(ret);
+      });
+
+      test('uses correct cycle dates for a full winter/all year return', async () => {
+        expect(returnCycleRepo.getOrCreateReturnCycle.calledWith({
+          startDate: '2018-04-01',
+          endDate: '2019-03-31',
+          isSummer: false
+        })).to.be.true();
       });
     });
 
