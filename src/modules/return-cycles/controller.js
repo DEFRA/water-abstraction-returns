@@ -7,7 +7,7 @@ const camelCaseKeys = require('../../lib/camel-case-keys');
 /**
  * Gets a list of return cycles with stats about returns in each cycle
  */
-const getReturnCyclesReport = async (request) => {
+const getReturnCyclesReport = async request => {
   const { startDate } = request.query;
 
   const data = await repo.getReturnCycleStatsReport(startDate);

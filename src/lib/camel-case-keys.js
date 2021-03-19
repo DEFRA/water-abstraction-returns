@@ -8,8 +8,7 @@ const deepMapKeys = require('map-keys-deep-lodash');
  * @param {Array|Object} data The array of objects, or object that is to
  * have it's keys camel cased
  */
-const camelCaseKeys = data => {
-  return deepMapKeys(data, (value, key) => camelCase(key));
-};
+const camelCaseKeys = data =>
+  deepMapKeys(data, (value, key) => camelCase(key));
 
 module.exports = camelCaseKeys;
