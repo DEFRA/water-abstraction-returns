@@ -1,6 +1,8 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
+
 -- Create a table to hold return cycles
 create table returns.return_cycles (
-  return_cycle_id uuid default gen_random_uuid() primary key,
+  return_cycle_id uuid default public.gen_random_uuid() primary key,
   start_date date not null,
   end_date date not null,
   due_date date not null,
