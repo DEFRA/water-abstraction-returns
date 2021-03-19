@@ -15,13 +15,19 @@ const getReturnCycleStatsReport = async startDate => {
  *
  * The due date is automatically set 28 days after the cycle end date
  *
- * @param {String} startDate - YYYY-MM-DD
- * @param {String} endDate - YYYY-MM-DD
- * @param {Boolean} isSummer
+ * @param {Object} cycle
+ * @param {String} cycle.startDate - YYYY-MM-DD
+ * @param {String} cycle.endDate - YYYY-MM-DD
+ * @param {Boolean} cycle.isSummer
  * @returns {Promise<Object>} resolves with the row created/fetched
  */
-const getOrCreateReturnCycle = async (startDate, endDate, isSummer) => {
-  const { rows: [row] } = await pool.query(queries.upsert, [startDate, endDate, isSummer]);
+const getOrCreateReturnCycle = async cycle => {
+  const params = [
+    cycle.startDate,
+    cycle.endDate,
+    cycle.isSummer
+  ];
+  const { rows: [row] } = await pool.query(queries.upsert, params);
   return row;
 };
 
