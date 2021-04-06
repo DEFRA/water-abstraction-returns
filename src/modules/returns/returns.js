@@ -1,5 +1,9 @@
-const HAPIRestAPI = require('@envage/hapi-pg-rest-api');
+'use strict';
+
 const Joi = require('@hapi/joi');
+const HAPIRestAPI = require('@envage/hapi-pg-rest-api');
+
+const { preInsert } = require('./lib/pre-insert');
 const { pool } = require('../../lib/connectors/db');
 
 const isoDateRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
@@ -29,8 +33,9 @@ const returnsApi = new HAPIRestAPI({
     return_requirement: Joi.string(),
     under_query: Joi.boolean(),
     under_query_comment: Joi.string(),
-    is_test: Joi.boolean().default(false)
-  }
+    is_test: Joi.boolean()
+  },
+  preInsert
 });
 
 module.exports = returnsApi;
