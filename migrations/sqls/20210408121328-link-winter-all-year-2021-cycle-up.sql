@@ -22,9 +22,6 @@ update returns.returns
       on r.start_date>= c.start_date 
       and r.end_date<= c.end_date 
       and (r.metadata->>'isSummer')::boolean=c.is_summer
-    where 
-      r.start_date>='2020-04-01'
-      and r.end_date<='2021-03-31'
-      and (r.metadata->>'isSummer')::boolean=false
+    where r.start_date>='2008-04-01'
   ) c
   where returns.return_id=c.return_id;
