@@ -19,9 +19,11 @@ select
   count(*) filter (where status='completed' and is_digital=true) as completed_digital_count,
   count(*) filter (where status='completed' and is_digital=false) as completed_non_digital_count,
   count(*) filter (where status='completed' and is_digital=true and is_on_time=true) as completed_digital_on_time_count,
-    count(*) filter (where status='completed' and is_digital=true and is_on_time=false) as completed_digital_late_count,
+  count(*) filter (where status='completed' and is_digital=true and is_on_time=false) as completed_digital_late_count,
   count(*) filter (where status='completed' and is_digital=false and is_on_time=true) as completed_non_digital_on_time_count,
-    count(*) filter (where status='completed' and is_digital=false and is_on_time=false) as completed_non_digital_late_count
+  count(*) filter (where status='completed' and is_digital=false and is_on_time=false) as completed_non_digital_late_count,
+  count(*) filter (where status='completed' and is_on_time=true) as completed_on_time_count,
+  count(*) filter (where status='completed' and is_on_time=false) as completed_late_count
 from (
   select 
     rc.*,  
@@ -29,7 +31,11 @@ from (
     r.returns_frequency, 
     r.licence_ref, 
     r.received_date<=r.due_date as is_on_time,
-    v.user_type='external' as is_digital
+    case 
+      when v.user_type='external' then true
+      when v.user_type='internal' then false
+      else null
+    end as is_digital
   from returns.return_cycles rc
     left join returns.returns r
       on rc.return_cycle_id=r.return_cycle_id
