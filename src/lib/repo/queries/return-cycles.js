@@ -41,7 +41,7 @@ from (
       on rc.return_cycle_id=r.return_cycle_id
     left join returns.versions v 
       on r.return_id=v.return_id and v.current=true 
-   where rc.start_date>=$1
+   where rc.start_date>=$1 and rc.end_date < now()
 ) r
 group by r.return_cycle_id, r.start_date, r.end_date, r.due_date, r.is_summer
 `;
