@@ -1,6 +1,6 @@
 {
   "name": "water-abstraction-returns",
-  "version": "2.8.0",
+  "version": "2.10.1",
   "description": "Service for water abstraction returns data",
   "main": "index.js",
   "repository": {
