@@ -21,7 +21,9 @@ module.exports = {
 
   pg: {
     connectionString: process.env.DATABASE_URL,
-    max: process.env.NODE_ENV === 'local' ? 20 : 7
+    max: process.env.NODE_ENV === 'local' ? 20 : 7,
+    idleTimeoutMillis: 20000,
+    connectionTimeoutMillis: 20000
   },
 
   server: {
