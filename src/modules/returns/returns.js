@@ -1,6 +1,6 @@
 'use strict';
 
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 const HAPIRestAPI = require('@envage/hapi-pg-rest-api');
 
 const { preInsert } = require('./lib/pre-insert');

@@ -1,6 +1,6 @@
 'use-strict';
 
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 
 const controller = require('./controller');
 
@@ -11,7 +11,7 @@ exports.getReturnCyclesReport = {
   config: {
     description: 'Gets returns cycles statistics',
     validate: {
-      query: Joi.object({
+      query: Joi.object().keys({
         startDate: Joi.string().isoDate().default('1900-01-01')
       })
     }
@@ -25,7 +25,7 @@ exports.getReturnCycle = {
   config: {
     description: 'Gets a single return cycle by ID',
     validate: {
-      params: Joi.object({
+      params: Joi.object().keys({
         returnCycleId: Joi.string().guid().required()
       })
     }
@@ -39,7 +39,7 @@ exports.getReturnCycleReturns = {
   config: {
     description: 'Gets a report of returns for the given cycle',
     validate: {
-      params: Joi.object({
+      params: Joi.object().keys({
         returnCycleId: Joi.string().guid().required()
       })
     }
