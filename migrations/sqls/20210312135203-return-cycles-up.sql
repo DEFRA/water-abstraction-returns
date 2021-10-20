@@ -2,7 +2,7 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
 
 -- Create a table to hold return cycles
 create table returns.return_cycles (
-  return_cycle_id uuid default public.gen_random_uuid() primary key,
+  return_cycle_id uuid default gen_random_uuid() primary key,
   start_date date not null,
   end_date date not null,
   due_date date not null,
@@ -18,11 +18,11 @@ insert into returns.return_cycles (
   start_date,
   end_date,
   due_date,
-  is_summer, 
+  is_summer,
   is_submitted_in_wrls,
   date_created
 )
-values 
+values
   ('2008-04-01', '2009-03-31', '2009-04-28', false, false, NOW()),
   ('2008-11-01', '2009-10-31', '2009-11-28', true, false, NOW()),
   ('2009-04-01', '2010-03-31', '2010-04-28', false, false, NOW()),
@@ -48,19 +48,19 @@ values
   ('2019-04-01', '2020-03-31', '2020-10-16', false, true, NOW()),
   ('2019-11-01', '2020-10-31', '2020-11-28', true, true, NOW());
 
-alter table returns.returns 
-  add column return_cycle_id uuid 
+alter table returns.returns
+  add column return_cycle_id uuid
   references returns.return_cycles(return_cycle_id);
 
 -- Assign each return to a cycle ID
-update returns.returns 
-  set return_cycle_id=c.return_cycle_id 
+update returns.returns
+  set return_cycle_id=c.return_cycle_id
   from (
-    select r.return_id, c.return_cycle_id 
+    select r.return_id, c.return_cycle_id
     from returns.returns r
-    join returns.return_cycles c 
-      on r.start_date>= c.start_date 
-      and r.end_date<= c.end_date 
+    join returns.return_cycles c
+      on r.start_date>= c.start_date
+      and r.end_date<= c.end_date
       and (r.metadata->>'isSummer')::boolean=c.is_summer
     where r.start_date>='2008-04-01'
   ) c
