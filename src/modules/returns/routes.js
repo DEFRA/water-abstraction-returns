@@ -11,12 +11,12 @@ const voidReturns = {
   config: {
     description: 'For the given licence and valid return ids, marks other returns as void',
     validate: {
-      payload: {
+      payload: Joi.object({
         licenceNumber: Joi.string().required(),
         licenceType: Joi.string().required(),
         regime: Joi.string().required(),
         validReturnIds: Joi.array().items(Joi.string())
-      }
+      })
     }
   }
 };

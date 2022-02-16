@@ -8,7 +8,7 @@ module.exports = {
     create: () => {
       const request = {
         method: 'POST',
-        url: `/returns/1.0/returns`,
+        url: '/returns/1.0/returns',
         headers,
         payload: {
           return_id: uuid(),
@@ -61,7 +61,7 @@ module.exports = {
     create: (returnId, versionNumber = 1) => {
       const request = {
         method: 'POST',
-        url: `/returns/1.0/versions`,
+        url: '/returns/1.0/versions',
         headers,
         payload: {
           version_id: uuid(),
@@ -87,7 +87,7 @@ module.exports = {
 
       const request = {
         method: 'POST',
-        url: `/returns/1.0/lines`,
+        url: '/returns/1.0/lines',
         headers,
         payload: {
           line_id: uuid(),

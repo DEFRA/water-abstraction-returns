@@ -24,7 +24,8 @@ const registerServerPlugins = async (server) => {
   // Third-party plugins
   await server.register({
     plugin: Good,
-    options: { ...config.good,
+    options: {
+      ...config.good,
       reporters: {
         winston: [goodWinstonStream]
       }

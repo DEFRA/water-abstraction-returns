@@ -39,7 +39,7 @@ experiment('modules/returns/lib/pre-insert', () => {
       });
     });
 
-    experiment('for a full winter/all year return', async () => {
+    experiment('for a full winter/all year return', () => {
       beforeEach(async () => {
         const ret = createReturn('2018-04-01', '2019-03-31', false);
         result = await preInsert(ret);
@@ -58,7 +58,7 @@ experiment('modules/returns/lib/pre-insert', () => {
       });
     });
 
-    experiment('for a full winter/all year return where the metadata is not JSON stringified', async () => {
+    experiment('for a full winter/all year return where the metadata is not JSON stringified', () => {
       beforeEach(async () => {
         const ret = createReturn('2018-04-01', '2019-03-31', false, false);
         result = await preInsert(ret);
@@ -73,7 +73,7 @@ experiment('modules/returns/lib/pre-insert', () => {
       });
     });
 
-    experiment('for a partial winter/all year return', async () => {
+    experiment('for a partial winter/all year return', () => {
       beforeEach(async () => {
         const ret = createReturn('2019-02-01', '2019-03-28', false);
         result = await preInsert(ret);
@@ -92,7 +92,7 @@ experiment('modules/returns/lib/pre-insert', () => {
       });
     });
 
-    experiment('for a full year summer return', async () => {
+    experiment('for a full year summer return', () => {
       beforeEach(async () => {
         const ret = createReturn('2017-11-01', '2018-10-31', true);
         result = await preInsert(ret);
@@ -111,7 +111,7 @@ experiment('modules/returns/lib/pre-insert', () => {
       });
     });
 
-    experiment('for a partial year summer return', async () => {
+    experiment('for a partial year summer return', () => {
       beforeEach(async () => {
         const ret = createReturn('2017-12-12', '2018-09-31', true);
         result = await preInsert(ret);
