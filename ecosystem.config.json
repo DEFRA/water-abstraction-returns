@@ -5,7 +5,7 @@
       "ignore_watch": [
         "node_modules"
       ],
-      "script": "./index.js",
+      "script": "index.js",
       "env": {
         "watch": true
       },
