@@ -10,6 +10,7 @@
         "watch": true
       },
       "env_production": {
+        "script": "index.js",
         "cwd": "/srv/app/node/water-abstraction-returns/current",
         "watch": false,
         "instances" : "max",
