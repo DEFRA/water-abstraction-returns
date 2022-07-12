@@ -5,11 +5,12 @@
       "ignore_watch": [
         "node_modules"
       ],
-      "script": "index.js",
+      "script": "./index.js",
       "env": {
         "watch": true
       },
       "env_production": {
+        "cwd": "/srv/app/node/water-abstraction-returns",
         "watch": false,
         "instances" : "max",
         "exec_mode" : "cluster"
