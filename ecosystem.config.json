@@ -10,7 +10,7 @@
         "watch": true
       },
       "env_production": {
-        "cwd": "/srv/app/node/water-abstraction-returns",
+        "cwd": "/srv/app/node/water-abstraction-returns/current",
         "watch": false,
         "instances" : "max",
         "exec_mode" : "cluster"
