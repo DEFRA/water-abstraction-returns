@@ -1,8 +1,8 @@
-'use-strict';
+'use-strict'
 
-const Joi = require('joi');
+const Joi = require('joi')
 
-const controller = require('./controller');
+const controller = require('./controller')
 
 exports.getReturnCyclesReport = {
   path: '/returns/1.0/return-cycles/report',
@@ -16,7 +16,7 @@ exports.getReturnCyclesReport = {
       })
     }
   }
-};
+}
 
 exports.getReturnCycle = {
   path: '/returns/1.0/return-cycles/{returnCycleId}',
@@ -30,7 +30,7 @@ exports.getReturnCycle = {
       })
     }
   }
-};
+}
 
 exports.getReturnCycleReturns = {
   path: '/returns/1.0/return-cycles/{returnCycleId}/returns',
@@ -44,4 +44,4 @@ exports.getReturnCycleReturns = {
       })
     }
   }
-};
+}
