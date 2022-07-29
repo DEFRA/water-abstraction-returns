@@ -1,5 +1,5 @@
-const { pool } = require('../../lib/connectors/db');
-const config = require('../../../config');
+const { pool } = require('../../lib/connectors/db')
+const config = require('../../../config')
 
 const deleteLines = () => {
   return pool.query(`
@@ -12,8 +12,8 @@ const deleteLines = () => {
       v.return_id = r.return_id
       and
       r.is_test = true;
-  `);
-};
+  `)
+}
 
 const deleteVersions = () => {
   return pool.query(`
@@ -24,24 +24,24 @@ const deleteVersions = () => {
       v.return_id = r.return_id
       and
        r.is_test = true;
-  `);
-};
+  `)
+}
 
 const deleteReturns = () => {
   return pool.query(`
     delete
     from returns.returns
     where is_test = true;
-  `);
-};
+  `)
+}
 
 const deleteTestData = async (request, h) => {
   if (config.isAcceptanceTestTarget) {
-    await deleteLines();
-    await deleteVersions();
-    await deleteReturns();
+    await deleteLines()
+    await deleteVersions()
+    await deleteReturns()
   }
-  return h.response().code(204);
-};
+  return h.response().code(204)
+}
 
-exports.deleteTestData = deleteTestData;
+exports.deleteTestData = deleteTestData

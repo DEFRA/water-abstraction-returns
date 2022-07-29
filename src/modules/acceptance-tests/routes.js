@@ -1,5 +1,5 @@
-const controller = require('./controller');
-const config = require('../../../config');
+const controller = require('./controller')
+const config = require('../../../config')
 
 const deleteTestData = {
   method: 'DELETE',
@@ -8,12 +8,12 @@ const deleteTestData = {
   config: {
     description: 'Deletes any data created by the acceptance tests setup'
   }
-};
-
-const routes = [];
-
-if (config.isAcceptanceTestTarget) {
-  routes.push(deleteTestData);
 }
 
-module.exports = routes;
+const routes = []
+
+if (config.isAcceptanceTestTarget) {
+  routes.push(deleteTestData)
+}
+
+module.exports = routes

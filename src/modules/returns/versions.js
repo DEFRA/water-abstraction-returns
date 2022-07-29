@@ -1,6 +1,6 @@
-const HAPIRestAPI = require('@envage/hapi-pg-rest-api');
-const Joi = require('joi');
-const { pool } = require('../../lib/connectors/db');
+const HAPIRestAPI = require('@envage/hapi-pg-rest-api')
+const Joi = require('joi')
+const { pool } = require('../../lib/connectors/db')
 
 const versionsApi = new HAPIRestAPI({
   table: 'returns.versions',
@@ -29,13 +29,13 @@ const versionsApi = new HAPIRestAPI({
         update returns.versions
         set current=false
         where return_id=$1
-        and version_number < $2;`;
+        and version_number < $2;`
 
-      const params = [data.return_id, data.version_number];
-      await pool.query(query, params);
+      const params = [data.return_id, data.version_number]
+      await pool.query(query, params)
     }
-    return data;
+    return data
   }
-});
+})
 
-module.exports = versionsApi;
+module.exports = versionsApi

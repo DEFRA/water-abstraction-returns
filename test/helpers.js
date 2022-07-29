@@ -1,6 +1,6 @@
-'use-strict';
-const Hapi = require('@hapi/hapi');
-const { cloneDeep } = require('lodash');
+'use-strict'
+const Hapi = require('@hapi/hapi')
+const { cloneDeep } = require('lodash')
 
 /**
  * Creates a HAPI server to allow a single route to be
@@ -11,13 +11,13 @@ const { cloneDeep } = require('lodash');
  * @param {Object} route The HAPI route definition
  */
 const createServerForRoute = route => {
-  const server = Hapi.server();
-  const testRoute = cloneDeep(route);
-  testRoute.handler = async () => 'ok';
+  const server = Hapi.server()
+  const testRoute = cloneDeep(route)
+  testRoute.handler = async () => 'ok'
 
-  server.route(testRoute);
+  server.route(testRoute)
 
-  return server;
-};
+  return server
+}
 
-exports.createServerForRoute = createServerForRoute;
+exports.createServerForRoute = createServerForRoute

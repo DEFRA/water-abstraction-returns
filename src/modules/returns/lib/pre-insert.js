@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-const { isObject, get } = require('lodash');
-const helpers = require('@envage/water-abstraction-helpers');
+const { isObject, get } = require('lodash')
+const helpers = require('@envage/water-abstraction-helpers')
 
-const returnCycleRepo = require('../../../lib/repo/return-cycles');
+const returnCycleRepo = require('../../../lib/repo/return-cycles')
 
 /**
  * Returns the correct full return cycle given the return start/end dates and season
@@ -16,7 +16,7 @@ const getCycle = (startDate, isSummer) => ({
   startDate: helpers.returns.date.getPeriodStart(startDate, isSummer),
   endDate: helpers.returns.date.getPeriodEnd(startDate, isSummer),
   isSummer
-});
+})
 
 /**
  * The preInsert hook allows the data to be modified prior to insert.
@@ -28,19 +28,19 @@ const getCycle = (startDate, isSummer) => ({
  */
 const preInsert = async data => {
   // Parse isSummer flag from metadata
-  const metadata = isObject(data.metadata) ? data.metadata : JSON.parse(data.metadata);
-  const isSummer = get(metadata, 'isSummer', false);
+  const metadata = isObject(data.metadata) ? data.metadata : JSON.parse(data.metadata)
+  const isSummer = get(metadata, 'isSummer', false)
 
   // Find matching return cycle
-  const cycle = getCycle(data.start_date, isSummer);
+  const cycle = getCycle(data.start_date, isSummer)
 
   // Get/create return cycle for submitted return
-  const result = await returnCycleRepo.getOrCreateReturnCycle(cycle);
+  const result = await returnCycleRepo.getOrCreateReturnCycle(cycle)
 
   return {
     ...data,
     return_cycle_id: get(result, 'return_cycle_id', null)
-  };
-};
+  }
+}
 
-exports.preInsert = preInsert;
+exports.preInsert = preInsert

@@ -1,7 +1,7 @@
-const server = require('../../../index');
-const uuid = require('uuid/v4');
+const server = require('../../../index')
+const uuid = require('uuid/v4')
 
-const headers = { Authorization: process.env.JWT_TOKEN };
+const headers = { Authorization: process.env.JWT_TOKEN }
 
 module.exports = {
   returns: {
@@ -27,8 +27,8 @@ module.exports = {
           under_query: true,
           under_query_comment: 'Return was water damaged'
         }
-      };
-      return server.inject(request);
+      }
+      return server.inject(request)
     },
 
     delete: returnId => {
@@ -36,8 +36,8 @@ module.exports = {
         method: 'DELETE',
         url: `/returns/1.0/returns/${returnId}`,
         headers
-      };
-      return server.inject(request);
+      }
+      return server.inject(request)
     }
   },
 
@@ -47,16 +47,16 @@ module.exports = {
         method: 'GET',
         url: `/returns/1.0/versions/${versionId}`,
         headers
-      };
-      return server.inject(request);
+      }
+      return server.inject(request)
     },
     delete: versionId => {
       const request = {
         method: 'DELETE',
         url: `/returns/1.0/versions/${versionId}`,
         headers
-      };
-      return server.inject(request);
+      }
+      return server.inject(request)
     },
     create: (returnId, versionNumber = 1) => {
       const request = {
@@ -73,8 +73,8 @@ module.exports = {
           nil_return: false,
           current: true
         }
-      };
-      return server.inject(request);
+      }
+      return server.inject(request)
     }
   },
 
@@ -83,7 +83,7 @@ module.exports = {
       const metadata = {
         meterManufacturer: 'Super Accurate Meters',
         meterSerialNumber: '00010001'
-      };
+      }
 
       const request = {
         method: 'POST',
@@ -100,9 +100,9 @@ module.exports = {
           time_period: 'day',
           metadata: JSON.stringify(metadata)
         }
-      };
+      }
 
-      return server.inject(request);
+      return server.inject(request)
     },
 
     delete: lineId => {
@@ -110,9 +110,9 @@ module.exports = {
         method: 'DELETE',
         url: `/returns/1.0/lines/${lineId}`,
         headers
-      };
+      }
 
-      return server.inject(request);
+      return server.inject(request)
     }
   }
-};
+}
