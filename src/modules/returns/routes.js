@@ -1,8 +1,8 @@
-const returnsApi = require('./returns');
-const versionsApi = require('./versions');
-const linesApi = require('./lines');
-const voidReturnsController = require('./void-returns');
-const Joi = require('joi');
+const returnsApi = require('./returns')
+const versionsApi = require('./versions')
+const linesApi = require('./lines')
+const voidReturnsController = require('./void-returns')
+const Joi = require('joi')
 
 const voidReturns = {
   method: 'PATCH',
@@ -19,11 +19,11 @@ const voidReturns = {
       })
     }
   }
-};
+}
 
 module.exports = [
   ...returnsApi.getRoutes(),
   ...versionsApi.getRoutes(),
   ...linesApi.getRoutes(),
   voidReturns
-];
+]

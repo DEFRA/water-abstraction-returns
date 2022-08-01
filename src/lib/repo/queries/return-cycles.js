@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 exports.returnCycleStatsReport = `
 select 
@@ -44,7 +44,7 @@ from (
    where rc.start_date>=$1 and rc.end_date < now()
 ) r
 group by r.return_cycle_id, r.start_date, r.end_date, r.due_date, r.is_summer
-`;
+`
 
 exports.upsert = `
 insert into returns.return_cycles (
@@ -58,11 +58,11 @@ values (
 on conflict (start_date, end_date, is_summer)
   do update set date_updated=now()
   returning *;
-`;
+`
 
 exports.getReturnCycle = `
 select * from returns.return_cycles where return_cycle_id=$1
-`;
+`
 
 exports.getReturnCycleReturns = `
 select 
@@ -84,4 +84,4 @@ left join (
   where v.current=true
 ) v on r.return_id=v.return_id
 where r.return_cycle_id=$1
-`;
+`

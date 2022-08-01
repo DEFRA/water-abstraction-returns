@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-const { pool } = require('../connectors/db');
+const { pool } = require('../connectors/db')
 
-const queries = require('./queries/return-cycles');
+const queries = require('./queries/return-cycles')
 
 const getReturnCycleStatsReport = async startDate => {
-  const { rows } = await pool.query(queries.returnCycleStatsReport, [startDate]);
-  return rows;
-};
+  const { rows } = await pool.query(queries.returnCycleStatsReport, [startDate])
+  return rows
+}
 
 /**
  * Upserts returns.return_cycles to either get or create a return cycle
@@ -26,10 +26,10 @@ const getOrCreateReturnCycle = async cycle => {
     cycle.startDate,
     cycle.endDate,
     cycle.isSummer
-  ];
-  const { rows: [row] } = await pool.query(queries.upsert, params);
-  return row;
-};
+  ]
+  const { rows: [row] } = await pool.query(queries.upsert, params)
+  return row
+}
 
 /**
  * Gets return cycle by ID
@@ -38,9 +38,9 @@ const getOrCreateReturnCycle = async cycle => {
  * @returns {Promise<Object>}
  */
 const getReturnCycle = async id => {
-  const { rows: [row] } = await pool.query(queries.getReturnCycle, [id]);
-  return row;
-};
+  const { rows: [row] } = await pool.query(queries.getReturnCycle, [id])
+  return row
+}
 
 /**
  * Gets a report of returns for a given cycle
@@ -49,11 +49,11 @@ const getReturnCycle = async id => {
  * @returns {Promise<Array>}
  */
 const getReturnCycleReturns = async id => {
-  const { rows } = await pool.query(queries.getReturnCycleReturns, [id]);
-  return rows;
-};
+  const { rows } = await pool.query(queries.getReturnCycleReturns, [id])
+  return rows
+}
 
-exports.getReturnCycleStatsReport = getReturnCycleStatsReport;
-exports.getOrCreateReturnCycle = getOrCreateReturnCycle;
-exports.getReturnCycle = getReturnCycle;
-exports.getReturnCycleReturns = getReturnCycleReturns;
+exports.getReturnCycleStatsReport = getReturnCycleStatsReport
+exports.getOrCreateReturnCycle = getOrCreateReturnCycle
+exports.getReturnCycle = getReturnCycle
+exports.getReturnCycleReturns = getReturnCycleReturns

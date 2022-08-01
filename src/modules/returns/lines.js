@@ -1,8 +1,8 @@
-const HAPIRestAPI = require('@envage/hapi-pg-rest-api');
-const Joi = require('joi');
-const { pool } = require('../../lib/connectors/db');
+const HAPIRestAPI = require('@envage/hapi-pg-rest-api')
+const Joi = require('joi')
+const { pool } = require('../../lib/connectors/db')
 
-const isoDateRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
+const isoDateRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
 
 const linesApi = new HAPIRestAPI({
   table: 'returns.lines',
@@ -26,6 +26,6 @@ const linesApi = new HAPIRestAPI({
     metadata: Joi.string(),
     reading_type: Joi.string().allow('estimated', 'measured', 'assessed', 'derived')
   }
-});
+})
 
-module.exports = linesApi;
+module.exports = linesApi

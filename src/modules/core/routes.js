@@ -1,4 +1,4 @@
-const controller = require('./controller');
+const controller = require('./controller')
 
 const status = {
   method: 'GET',
@@ -8,6 +8,6 @@ const status = {
     description: 'Checks if the service is alive'
   },
   path: '/status'
-};
+}
 
-module.exports = [status];
+module.exports = [status]
