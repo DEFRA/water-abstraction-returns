@@ -12,7 +12,7 @@ const deleteTestData = {
 
 const routes = []
 
-if (config.isAcceptanceTestTarget) {
+if (!config.isProduction) {
   routes.push(deleteTestData)
 }
 

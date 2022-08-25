@@ -1,4 +1,7 @@
-const isAcceptanceTestTarget = ['local', 'dev', 'development', 'test', 'qa', 'preprod'].includes(process.env.NODE_ENV)
+'use strict'
+
+const environment = process.env.ENVIRONMENT
+const isProduction = environment === 'prd'
 
 module.exports = {
 
@@ -20,7 +23,7 @@ module.exports = {
 
   pg: {
     connectionString: process.env.DATABASE_URL,
-    max: process.env.NODE_ENV === 'local' ? 20 : 7,
+    max: 7,
     idleTimeoutMillis: 10000,
     connectionTimeoutMillis: 5000
   },
@@ -32,5 +35,5 @@ module.exports = {
     }
   },
 
-  isAcceptanceTestTarget
+  isProduction
 }
