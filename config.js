@@ -1,4 +1,7 @@
-const isAcceptanceTestTarget = ['local', 'dev', 'development', 'test', 'qa', 'preprod'].includes(process.env.NODE_ENV)
+'use strict'
+
+const environment = process.env.ENVIRONMENT
+const isProduction = environment === 'prd'
 
 module.exports = {
 
@@ -32,5 +35,5 @@ module.exports = {
     }
   },
 
-  isAcceptanceTestTarget
+  isProduction
 }

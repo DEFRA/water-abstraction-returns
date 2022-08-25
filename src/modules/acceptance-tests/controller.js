@@ -36,7 +36,7 @@ const deleteReturns = () => {
 }
 
 const deleteTestData = async (request, h) => {
-  if (config.isAcceptanceTestTarget) {
+  if (!config.isProduction) {
     await deleteLines()
     await deleteVersions()
     await deleteReturns()
