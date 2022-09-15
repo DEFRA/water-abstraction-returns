@@ -21,10 +21,10 @@
   },
   "dependencies": {
     "@envage/hapi-pg-rest-api": "^7.0.0",
-    "@envage/water-abstraction-helpers": "4.8.0",
+    "@envage/water-abstraction-helpers": "4.8.1",
     "@hapi/boom": "^9.1.4",
     "@hapi/good": "^9.0.1",
-    "@hapi/hapi": "^20.2.1",
+    "@hapi/hapi": "^20.2.2",
     "blipp": "^4.0.2",
     "db-migrate": "^0.11.13",
     "db-migrate-pg": "^1.2.2",
@@ -34,8 +34,8 @@
     "joi": "^17.6.0",
     "lodash": "^4.17.21",
     "map-keys-deep-lodash": "^1.2.4",
-    "moment": "^2.29.1",
-    "pg": "^8.7.3",
+    "moment": "^2.29.4",
+    "pg": "^8.8.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
