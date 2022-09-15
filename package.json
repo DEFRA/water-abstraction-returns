@@ -39,7 +39,8 @@
     "moment": "^2.29.1",
     "moment-range": "^4.0.2",
     "pg": "^8.7.3",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@hapi/code": "^8.0.7",
