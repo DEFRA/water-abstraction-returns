@@ -1,5 +1,5 @@
 const server = require('../../../index')
-const uuid = require('uuid/v4')
+const { v4: uuid } = require('uuid')
 
 const headers = { Authorization: process.env.JWT_TOKEN }
 
