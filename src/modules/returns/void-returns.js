@@ -22,7 +22,7 @@ const patchVoidReturns = async request => {
     logger.info(`Void returns result for ${licenceNumber}`, result.rowCount)
     return result
   } catch (err) {
-    logger.error('Failed to void returns', err)
+    logger.error('Failed to void returns', err.stack)
     return err
   }
 }
