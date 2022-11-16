@@ -2,15 +2,8 @@
   "apps": [
     {
       "name": "returns",
-      "ignore_watch": [
-        "node_modules"
-      ],
       "script": "index.js",
-      "env": {
-        "watch": true
-      },
       "env_production": {
-        "watch": false,
         "instances" : "max",
         "exec_mode" : "cluster"
       }
