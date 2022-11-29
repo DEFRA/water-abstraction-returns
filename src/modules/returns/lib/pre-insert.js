@@ -1,6 +1,5 @@
 'use strict'
 
-const { isObject, get } = require('lodash')
 const helpers = require('@envage/water-abstraction-helpers')
 
 const returnCycleRepo = require('../../../lib/repo/return-cycles')
@@ -28,18 +27,20 @@ const getCycle = (startDate, isSummer) => ({
  */
 const preInsert = async data => {
   // Parse isSummer flag from metadata
+  const isObject = a => a instanceof Object
   const metadata = isObject(data.metadata) ? data.metadata : JSON.parse(data.metadata)
-  const isSummer = get(metadata, 'isSummer', false)
+  const isSummer = metadata?.isSummer ?? false
 
   // Find matching return cycle
   const cycle = getCycle(data.start_date, isSummer)
 
   // Get/create return cycle for submitted return
   const result = await returnCycleRepo.getOrCreateReturnCycle(cycle)
+  const returnCycleId = result?.return_cycle_id ?? null
 
   return {
     ...data,
-    return_cycle_id: get(result, 'return_cycle_id', null)
+    return_cycle_id: returnCycleId
   }
 }
 
