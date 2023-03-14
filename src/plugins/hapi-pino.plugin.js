@@ -31,11 +31,14 @@ const config = require('../../config.js')
  */
 const testOptions = () => {
   if (process.env.NODE_ENV !== 'test' || config.log.logInTest) {
-    return {}
+    return {
+      // Only log errored requests
+      logEvents: ['request-error']
+    }
   }
 
   return {
-    // Don't log requests etc
+    // Don't log requests at all
     logEvents: false,
     // Don't log anything tagged with DEBUG or info, for example, req.log(['INFO'], 'User is an admin')
     ignoredEventTags: { log: ['DEBUG', 'INFO'], request: ['DEBUG', 'INFO'] }
