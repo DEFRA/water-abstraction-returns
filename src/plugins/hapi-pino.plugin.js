@@ -32,8 +32,7 @@ const config = require('../../config.js')
 const testOptions = () => {
   if (process.env.NODE_ENV !== 'test' || config.log.logInTest) {
     return {
-      // Only log errored requests
-      logEvents: ['request-error']
+      level: config.log.level
     }
   }
 
