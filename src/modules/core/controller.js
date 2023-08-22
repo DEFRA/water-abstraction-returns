@@ -1,13 +1,9 @@
-const Boom = require('@hapi/boom')
-const statusConnector = require('../../lib/connectors/status')
+'use strict'
 
-const getStatus = async () => {
-  try {
-    const status = await statusConnector.getStatus()
-    return status
-  } catch (e) {
-    throw Boom.badImplementation(e)
-  }
+function getStatus () {
+  return { status: 'alive' }
 }
 
-exports.getStatus = getStatus
+module.exports = {
+  getStatus
+}
