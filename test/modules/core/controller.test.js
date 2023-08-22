@@ -1,4 +1,6 @@
-const { test, experiment } = exports.lab = require('@hapi/lab').script()
+'use strict'
+
+const { experiment, test } = exports.lab = require('@hapi/lab').script()
 const { expect } = require('@hapi/code')
 const controller = require('../../../src/modules/core/controller')
 
