@@ -13,7 +13,7 @@ exports.setup = function (options, _seedLink) {
 }
 
 exports.up = function (db) {
-  const filePath = path.join(__dirname, 'sqls', '20231122170046-add-defaults-to-returns-tables-up.sql')
+  const filePath = path.join(__dirname, 'sqls', '20231122174439-add-defaults-to-returns-tables-up.sql')
   return new Promise(function (resolve, reject) {
     fs.readFile(filePath, { encoding: 'utf-8' }, function (err, data) {
       if (err) return reject(err)
@@ -27,7 +27,7 @@ exports.up = function (db) {
 }
 
 exports.down = function (db) {
-  const filePath = path.join(__dirname, 'sqls', '20231122170046-add-defaults-to-returns-tables-down.sql')
+  const filePath = path.join(__dirname, 'sqls', '20231122174439-add-defaults-to-returns-tables-down.sql')
   return new Promise(function (resolve, reject) {
     fs.readFile(filePath, { encoding: 'utf-8' }, function (err, data) {
       if (err) return reject(err)
