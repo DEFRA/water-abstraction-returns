@@ -27,17 +27,36 @@
   We've fixed the engine issue in [Set isUpload from return version
   multiple_upload](https://github.com/DEFRA/water-abstraction-system/pull/2145). This fix migration corrects the 750 (at
   time of writing) return logs that have been generated with `isUpload` set incorrectly.
+
+  Note - We have to wrap the query in an anonymous code block because we depend on a table in another schema but when
+  this is run in CI that schema does not exist.
 */
-UPDATE "returns"."returns" SET metadata = metadata || '{"isUpload": true}' WHERE return_id IN (
-  SELECT
-    r.return_id
-  FROM "returns"."returns" r
-  INNER JOIN water.return_requirements rr
-    ON rr.legacy_id::text = r.return_requirement
-  INNER JOIN water.return_versions rv
-    ON rv.return_version_id = rr.return_version_id
-  WHERE
-    r."source" = 'WRLS'
-    AND r.metadata->>'isUpload' = 'false'
-    AND rv.multiple_upload = TRUE
-);
+DO $$
+BEGIN
+  IF EXISTS
+    (
+      SELECT
+        1
+      FROM
+        information_schema.tables
+      WHERE
+        table_schema = 'water'
+        AND table_name = 'return_requirements'
+    )
+  THEN
+    UPDATE "returns"."returns" SET metadata = metadata || '{"isUpload": true}' WHERE return_id IN (
+      SELECT
+        r.return_id
+      FROM "returns"."returns" r
+      INNER JOIN water.return_requirements rr
+        ON rr.legacy_id::text = r.return_requirement
+      INNER JOIN water.return_versions rv
+        ON rv.return_version_id = rr.return_version_id
+      WHERE
+        r."source" = 'WRLS'
+        AND r.metadata->>'isUpload' = 'false'
+        AND rv.multiple_upload = TRUE
+    );
+  END IF;
+END
+$$;
