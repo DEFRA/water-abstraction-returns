@@ -1,1 +1,1 @@
-ALTER TABLE returns DROP COLUMN id;
+ALTER TABLE "returns"."returns" DROP COLUMN id;
