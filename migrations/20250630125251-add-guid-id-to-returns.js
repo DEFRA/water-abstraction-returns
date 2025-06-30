@@ -13,7 +13,7 @@ exports.setup = function (options, _seedLink) {
 }
 
 exports.up = function (db) {
-  const filePath = path.join(__dirname, 'sqls', '20250630125251-returns-id-up.sql')
+  const filePath = path.join(__dirname, 'sqls', '20250630125251-add-guid-id-to-returns-up.sql')
   return new Promise(function (resolve, reject) {
     fs.readFile(filePath, { encoding: 'utf-8' }, function (err, data) {
       if (err) return reject(err)
@@ -26,7 +26,7 @@ exports.up = function (db) {
 }
 
 exports.down = function (db) {
-  const filePath = path.join(__dirname, 'sqls', '20250630125251-returns-id-down.sql')
+  const filePath = path.join(__dirname, 'sqls', '20250630125251-add-guid-id-to-returns-down.sql')
   return new Promise(function (resolve, reject) {
     fs.readFile(filePath, { encoding: 'utf-8' }, function (err, data) {
       if (err) return reject(err)
