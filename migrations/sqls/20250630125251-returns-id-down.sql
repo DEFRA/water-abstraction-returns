@@ -1,0 +1,1 @@
+ALTER TABLE returns DROP COLUMN id;
