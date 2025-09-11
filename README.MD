@@ -3,7 +3,6 @@
 ![Build Status](https://github.com/DEFRA/water-abstraction-returns/actions/workflows/ci.yml/badge.svg?branch=main)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_water-abstraction-returns&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=DEFRA_water-abstraction-returns)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_water-abstraction-returns&metric=coverage)](https://sonarcloud.io/dashboard?id=DEFRA_water-abstraction-returns)
-[![Known Vulnerabilities](https://snyk.io/test/github/DEFRA/water-abstraction-returns/badge.svg)](https://snyk.io/test/github/DEFRA/water-abstraction-returns)
 [![Licence](https://img.shields.io/badge/Licence-OGLv3-blue.svg)](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3)
 
 The water-abstraction-returns service is a evolving solution to initially handle the returns required by water abstraction licences.
