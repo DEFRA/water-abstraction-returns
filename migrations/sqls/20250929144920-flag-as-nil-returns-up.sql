@@ -12,7 +12,7 @@ BEGIN;
 
 -- Step 1: Find all return versions that are not currently marked as nil returns but have no lines with a quantity
 WITH not_nil_with_blank_lines AS (
-	SELECT v.version_id
+  SELECT v.version_id
   FROM "returns".versions v
   LEFT JOIN "returns".lines l
     ON v.version_id = l.version_id AND l.quantity IS NOT NULL
