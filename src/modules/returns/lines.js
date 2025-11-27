@@ -1,5 +1,7 @@
 const HAPIRestAPI = require('@envage/hapi-pg-rest-api')
 const Joi = require('joi')
+
+const { preInsert } = require('./lib/pre-insert-lines')
 const { pool } = require('../../lib/connectors/db')
 
 const isoDateRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
@@ -25,7 +27,8 @@ const linesApi = new HAPIRestAPI({
     time_period: Joi.string().allow('day', 'week', 'month', 'year'),
     metadata: Joi.string(),
     reading_type: Joi.string().allow('estimated', 'measured', 'assessed', 'derived')
-  }
+  },
+  preInsert
 })
 
 module.exports = linesApi
