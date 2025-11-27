@@ -58,7 +58,6 @@ experiment('modules/returns/lib/pre-insert-lines', () => {
         quantity: 1.123457
       }])
     })
-
   })
 
   experiment('when the data object does not contain a quantity', () => {
