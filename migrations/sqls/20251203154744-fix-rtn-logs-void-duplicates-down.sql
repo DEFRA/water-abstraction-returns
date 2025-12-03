@@ -1,0 +1,10 @@
+UPDATE "returns"."returns" SET status = 'due' WHERE id = '15dfc5b1-cc45-4009-8de8-50cbeb79eb89';
+UPDATE "returns"."returns" SET status = 'due' WHERE id = '9e9e4c34-2991-477e-825f-815f09eda8c7';
+UPDATE "returns"."returns" SET status = 'due' WHERE id = '9b522cbf-6bfa-41ea-9df1-39bbe9d48652';
+UPDATE "returns"."returns" SET status = 'due' WHERE id = 'eb602d30-ccf2-409d-bd1d-55d63d0166bd';
+UPDATE "returns"."returns" SET status = 'due' WHERE id = 'c6a45d44-db42-4a48-83c2-b67e0d006500';
+UPDATE "returns"."returns" SET status = 'due' WHERE id = '92c65125-3e99-49b4-9947-10f36b702c6f';
+UPDATE "returns"."returns" SET status = 'completed' WHERE id = '546d72a3-eff9-4b32-97dd-c4b316024f8d';
+UPDATE "returns"."returns" SET status = 'due' WHERE id = 'ad3e5511-d198-4ae9-90dd-2a57493db6c9';
+UPDATE "returns"."returns" SET status = 'due' WHERE id = '2145682c-31de-4da7-95af-24abf13a4176';
+UPDATE "returns"."returns" SET status = 'due' WHERE id = '7aba7848-95e0-4ba1-9fac-030e6c0e674c';
