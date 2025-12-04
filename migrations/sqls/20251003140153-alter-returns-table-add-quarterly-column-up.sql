@@ -10,6 +10,8 @@
   this is run in CI that schema does not exist.
 */
 
+ALTER TABLE "returns"."returns" ADD COLUMN quarterly boolean default false not null;
+
 DO $$
 BEGIN
   IF EXISTS
@@ -23,8 +25,6 @@ BEGIN
         AND table_name = 'return_requirements'
     )
   THEN
-    ALTER TABLE "returns"."returns" ADD COLUMN quarterly boolean default false not null;
-
     WITH quarterly_return_requirements AS (
       SELECT rr.return_requirement_id
       FROM water.return_requirements rr
