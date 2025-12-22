@@ -99,5 +99,13 @@ experiment('Check versions API', () => {
 
       expect(firstResponse.result.data.current).to.be.true()
     })
+
+    test('populates the versions return_log_id field with the return id', async () => {
+      await versions.create(returnId, 1)
+
+      const firstResponse = await versions.get(versionId)
+
+      expect(firstResponse.result.data.return_log_id).to.equal(returnResponse.result.data.id)
+    })
   })
 })

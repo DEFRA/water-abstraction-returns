@@ -34,6 +34,23 @@ const versionsApi = new HAPIRestAPI({
       const params = [data.return_id, data.version_number]
       await pool.query(query, params)
     }
+
+    // Add the new return.id to the version as return_log_id foreign key
+    if (data.return_id) {
+      const query = `
+        select id
+        from returns.returns
+        where return_id=$1;`
+
+      const params = [data.return_id]
+      const { rows: [{ id }] } = await pool.query(query, params)
+
+      return {
+        ...data,
+        return_log_id: id
+      }
+    }
+
     return data
   }
 })
