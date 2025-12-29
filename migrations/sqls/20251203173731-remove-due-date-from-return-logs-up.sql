@@ -146,7 +146,7 @@ WITH all_year AS (
   WHERE
     r.status = 'due'
     AND r.start_date >= '2025-04-01'
-    AND r.end_date <= '2026-10-31'
+    AND r.end_date <= '2026-03-31'
     AND r.quarterly = FALSE
     AND r.metadata->>'isSummer' = 'false'
 )
