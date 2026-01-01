@@ -11,6 +11,8 @@
   this is run in CI that schema does not exist.
 */
 
+ALTER TABLE "returns"."returns" ADD COLUMN return_requirement_id UUID;
+
 DO $$
 BEGIN
   IF EXISTS
@@ -24,8 +26,6 @@ BEGIN
         AND table_name = 'return_requirements'
     )
   THEN
-    ALTER TABLE "returns"."returns" ADD COLUMN return_requirement_id UUID;
-
     UPDATE "returns"."returns" r
     SET return_requirement_id = rrv.return_requirement_id
     FROM water.licences l
