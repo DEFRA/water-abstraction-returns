@@ -19,6 +19,7 @@ module.exports = {
     'Response',
     'Headers',
     'Request',
-    'Symbol(undici.globalDispatcher.1)'
+    'Symbol(undici.globalDispatcher.1)',
+    'Symbol(undici.globalDispatcher.2)'
   ].join(',')
 };
